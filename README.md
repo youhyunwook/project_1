@@ -1,5 +1,5 @@
-<font color='yellow'>
-# **Ai 응용소프트웨어 양성 개발자 과정의 프로젝트 1** 
+<font size=14><font color='yellow'><b>
+Ai 응용소프트웨어 양성 개발자 과정의 프로젝트 1
 </font>
 <hr>
 # **프로젝트 팀 Name** 
