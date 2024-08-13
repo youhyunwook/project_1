@@ -1,5 +1,5 @@
-# **Ai 응용소프트웨어 양성 개발자 과정 <br>
-**Project 1**
+# **Ai 응용소프트웨어 양성 개발자 과정** <br>
+# **Project 1**
 <hr>
 ## 프로젝트 팀 Name <br> 
 Team. Unity
