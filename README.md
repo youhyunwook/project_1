@@ -1,5 +1,6 @@
 <font color='yellow'>
-# **Ai 응용소프트웨어 양성 개발자 과정의 프로젝트 1** </font>
+# **Ai 응용소프트웨어 양성 개발자 과정의 프로젝트 1** 
+</font>
 <hr>
 # **프로젝트 팀 Name** 
 Team. Unity
