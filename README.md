@@ -12,4 +12,4 @@ Team. Unity
 <hr>
 
 ## 프로젝트 개발 계획서<br>
-  https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit
+  [개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit)
