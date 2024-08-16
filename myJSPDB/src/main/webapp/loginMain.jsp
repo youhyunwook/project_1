@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>로그인 화면</title>
 <style>
 	body {
@@ -67,14 +70,24 @@
 	}
 	
 	.tab-content {
-	    display: none;
+	    display: flex;
+	    width: 365px;	
+ 	 justify-content: center;
+	    
 	}
 	
 	.tab-content form {
+	  	width: 365px;
 	    display: flex;
 	    flex-direction: column;
+	    justify-content: center;
 	}
-	
+	.input_icon{
+	 width: 30px;
+	 border: none;
+	 margin-left: 10px;
+	 
+	}
 	label {
 	    margin-bottom: 8px;
 	    color: teal;
@@ -119,6 +132,24 @@
 	p a:hover {
 	    text-decoration: underline;
 	}
+	#container1{
+    width: 360px;
+    height: 50px;
+    position: relative;
+    display: flex;
+}
+#container1 input{
+    width: 100%;
+    text-indent: 20px;
+}
+#container1 i{
+    text-align:center;
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    font-size: 20px;
+}
 </style>
 <script>
 	function showTab(tabName) {
@@ -155,15 +186,19 @@
         <div id="guest" class="tab-content">
         	<h1>방문자 로그인</h1>
             <form action="login" method="post">
-                <label for="customer_user_id">아이디</label>
-                <input type="text" id="customer_user_id" name="customer_user_id" placeholder="아이디를 입력하세요" required>
-                
-                <label for="customer_user_pwd">패스워드</label>
-                <input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
-                
-                <button type="submit">로그인</button>
+            <label for="customer_user_id">아이디</label>
+            <div id="container1">
+            <input type="text" id="customer_user_id" name="customer_user_id" placeholder="아이디를 입력하세요" required>
+            <i class="bi bi-person-square"></i>
+         	</div>
+ 			<label for="customer_user_pwd">패스워드</label>
+          	<div  id="container1">
+          	<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
+          	<i class="bi bi-key"></i>
+            </div>
+                <button type="submit" class="btn btn-secondary" >로그인</button>
                 <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
-                <button type="button" onclick="window.location.href='signup.jsp'">회원가입</button>
+                <button type="button" onclick="window.location.href='signup.jsp'" class="btn btn-secondary">회원가입</button>
             </form>
         </div>
         
@@ -176,13 +211,13 @@
                 <label for="pwd">패스워드</label>
                 <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
                 
-                <button type="submit">로그인</button>
+                <button type="submit" class="btn btn-secondary">로그인</button>
                 <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
-                <button type="button" onclick="window.location.href='adminSignup.jsp'">회원가입</button>
+                <button type="button" onclick="window.location.href='adminSignup.jsp'" class="btn btn-secondary">회원가입</button>
             </form>
         </div>
     </div>
 
-    
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>   
 </body>
 </html>
