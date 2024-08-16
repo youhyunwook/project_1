@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.nav-rigth{
+	   text-align: center;
+	   float:right;
+	   position:absolute;
+	   right: 30px;
+	   top: 20px;
+	   font-size: 15px;
+	  display:inline-block;
+}
