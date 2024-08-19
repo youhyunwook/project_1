@@ -4,69 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 <title>관리자 회원 가입</title>
-<style>
-	body {
-	    font-family: Arial, sans-serif;
-	    background-color: lightgrey;
-	    margin: 0;
-	    padding: 20px;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    height: 100vh; /* 전체 화면 높이 */
-	}
-	
-	.container {
-	    background: white;
-	    border: 1px solid lightgrey;
-	    padding: 20px;
-	    border-radius: 5px;
-	    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
-	    max-width: 400px; /* 컨테이너 최대 너비 조정 */
-	    width: 100%;
-	}
-	
-	h1 {
-	    text-align: center;
-	    color: deepgrey;
-	    margin-bottom: 20px;
-	}
-    label {
-        display: block;
-        margin-bottom: 8px;
-        color: teal; 
-    }
-    input[type="text"] {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid grey; 
-        border-radius: 3px;
-        margin-bottom: 12px;
-       	box-sizing: border-box; 
-    }
-    button {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 3px;
-        background-color: skyblue; 
-        color: white; 
-        font-size: 16px;                
-    }
-    a {
-  		text-align: center;
-  		display: inline-block;
-  		width: 93.5%;
-        padding: 10px;        
-        border-radius: 3px;
-        background-color: skyblue; 
-        color: white; 
-        text-decoration: none;
-        margin-top : 10px;
-        font-size: 16px;    
-    }
-</style>
+
 </head>
 <body>
 	<div class="container">
