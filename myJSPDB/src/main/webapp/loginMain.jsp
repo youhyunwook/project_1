@@ -32,6 +32,26 @@
 	    showTab('guest'); // 기본 '손님' 탭을 표시
 	});
 </script>
+<style>
+#container1{
+    width: 360px;
+    height: 50px;
+    position: relative;
+    display: flex;
+}
+#container1 input{
+    width: 100%;
+    text-indent: 1px;
+}
+#container1 i{
+    text-align:center;
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 10px;
+    font-size: 20px;
+}
+</style>
 </head>
 <body>
 	
@@ -64,11 +84,16 @@
         <div id="admin" class="tab-content" style="display: none;">
         	<h1>관리자 로그인</h1>
             <form action="adminlogin" method="post">
-                <label for="id">아이디</label>
-                <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
-                
-                <label for="pwd">패스워드</label>
-                <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
+          	 <div id="container1">
+                    <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
+                    <i class="bi bi-person-square"></i>
+                </div>
+
+                <label for="customer_user_pwd">패스워드</label>
+          	<div  id="container1">
+          		<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
+          		<i class="bi bi-key"></i>
+               	</div>
                 
                 <button type="submit" class="btn btn-secondary">로그인</button>
                 <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
