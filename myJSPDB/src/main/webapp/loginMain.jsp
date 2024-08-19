@@ -1,111 +1,3 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="login_style.css" />
-<title>로그인 화면</title>
-
-<script>
-	function showTab(tabName) {
-	    const tabs = document.querySelectorAll('.tab-content');
-	    tabs.forEach(tab => {
-	        tab.style.display = tab.id === tabName ? 'block' : 'none';
-	    });
-	
-	    const buttons = document.querySelectorAll('.tab-button');
-	    buttons.forEach(button => {
-	        if (button.textContent.trim() === tabName) {
-	            button.classList.add('active');
-	        } else {
-	            button.classList.remove('active');
-	        }
-	    });
-	}
-
-	// 페이지 로드 시 기본 탭을 설정
-	document.addEventListener('DOMContentLoaded', () => {
-	    showTab('guest'); // 기본 '손님' 탭을 표시
-	});
-</script>
-<style>
-#container1{
-    width: 360px;
-    height: 50px;
-    position: relative;
-    display: flex;
-}
-#container1 input{
-    width: 100%;
-    text-indent: 1px;
-}
-#container1 i{
-    text-align:center;
-    position: absolute;
-    top: 5px;
-    bottom: 5px;
-    left: 10px;
-    font-size: 20px;
-}
-</style>
-</head>
-<body>
-	
-	<div class="container">
-        
-        <div class="tabs">
-            <button class="tab-button" data-tab="guest" onclick="showTab('guest')">Customer</button>
-            <button class="tab-button" data-tab="admin" onclick="showTab('admin')">Admin</button>
-        </div>
-        
-        <div id="guest" class="tab-content">
-        	<h1>방문자 로그인</h1>
-            <form action="login" method="post">
-            <label for="customer_user_id">아이디</label>
-            <div id="container1">
-            <input type="text" id="customer_user_id" name="customer_user_id" placeholder="아이디를 입력하세요" required>
-            <i class="bi bi-person-square"></i>
-         	</div>
- 			<label for="customer_user_pwd">패스워드</label>
-          	<div  id="container1">
-          	<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
-          	<i class="bi bi-key"></i>
-            </div>
-                <button type="submit" class="btn btn-secondary" >로그인</button>
-                <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
-                <button type="button" onclick="window.location.href='signup.jsp'" class="btn btn-secondary">회원가입</button>
-            </form>
-        </div>
-        
-        <div id="admin" class="tab-content" style="display: none;">
-        	<h1>관리자 로그인</h1>
-            <form action="adminlogin" method="post">
-          	 <div id="container1">
-                    <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
-                    <i class="bi bi-person-square"></i>
-                </div>
-
-                <label for="customer_user_pwd">패스워드</label>
-          	<div  id="container1">
-          		<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
-          		<i class="bi bi-key"></i>
-               	</div>
-                
-                <button type="submit" class="btn btn-secondary">로그인</button>
-                <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
-                <button type="button" onclick="window.location.href='adminSignup.jsp'" class="btn btn-secondary">회원가입</button>
-            </form>
-        </div>
-    </div>
-
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>   
-</body>
-</html> -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -157,45 +49,51 @@
         <div id="guest" class="tab-content">
         	<h1>방문자 로그인</h1>
             <form action="login" method="post">
-            	<label for="customer_user_id">아이디</label>
-            	<div id="container1">
+                <label for="customer_user_id">아이디</label>
+   				<div id="container1">
             		<input type="text" id="customer_user_id" name="customer_user_id" placeholder="아이디를 입력하세요" required>
             		<i class="bi bi-person-square"></i>
          		</div>
- 				<label for="customer_user_pwd">패스워드</label>
-          		<div  id="container1">
+				
+                
+                <label for="customer_user_pwd">패스워드</label>
+                <div  id="container1">
           			<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
           			<i class="bi bi-key"></i>
-            	</div>
-                <button type="submit" class="btn btn-secondary" >로그인</button>
-                <p><a href="idPwfind.jsp">아이디, 비밀번호를 잊으셨나요?</a></p>
-                <button type="button" onclick="window.location.href='signup.jsp'" class="btn btn-secondary">회원가입</button>
+          		</div>
+                
+                <button type="submit">로그인</button>
+                <span><input type="checkbox" id="savelogin" name="savelogin" value="로그인 유지">
+                <label for="savelogin">로그인 유지</label></span>
+                <p><button type="button" onclick="window.location.href='findId.jsp'">아이디 찾기</button> <button type="button" onclick="window.location.href='findPw.jsp'">비밀번호 찾기</button></p>
+                
+                <button type="button" onclick="window.location.href='signup.jsp'">회원가입</button>
             </form>
         </div>
         
         <div id="admin" class="tab-content" style="display: none;">
         	<h1>관리자 로그인</h1>
             <form action="adminlogin" method="post">
-          		<label for="customer_user_id">아이디</label>
-          		<div id="container1">
-             		<input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
-                	<i class="bi bi-person-square"></i>
-             	</div>
-                <label for="customer_user_pwd">패스워드</label>
-          		<div  id="container1">
-          			<input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="비밀번호를 입력하세요" required>
-          			<i class="bi bi-key"></i>
+                <label for="id">아이디</label>
+                <div  id="container1">
+                	<input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
+                	<i class="bi bi-key"></i>
+                </div>
+                
+                <label for="pwd">패스워드</label>
+                <div  id="container1">
+	                <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
+	                <i class="bi bi-key"></i>
 				</div>
-               	
+                
                 <button type="submit">로그인</button>
                 <span><input type="checkbox" id="savelogin" name="savelogin" value="로그인 유지">
                 <label for="savelogin">로그인 유지</label></span>
-                <p><button type="button" onclick="window.location.href='findId.jsp'">아이디 찾기</button> <button type="button" onclick="window.location.href='findPw.jsp'">비밀번호 찾기</button></p>
+                <!-- <p><button type="button" onclick="window.location.href='findId.jsp'">아이디 찾기</button> <button type="button" onclick="window.location.href='adminSignup.jsp'">비밀번호 찾기</button></p> -->
                 <button type="button" onclick="window.location.href='adminSignup.jsp'">회원가입</button>
             </form>
         </div>
-    </div>     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>     
+    </div> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>           
 </body>
 </html>
-
