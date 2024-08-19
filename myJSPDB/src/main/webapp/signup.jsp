@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="login_style.css" />
 <title>방문자 회원 가입</title>
 
 </head>
