@@ -13,8 +13,9 @@ public class UserDao {
 	private static final String DB_PASSWORD = "1234";
 	
 	// 사용자 정보를 데이터베이스에 삽입하는 메소드
-	public void insertUser(User user) throws SQLException{
+	public void insertUser(User user, String emailId, String emailDomain) throws SQLException{
 		Connection connection = null;
+		String customer_user_email = emailId + "@" + emailDomain;
 		try {
 			// MariaDB JDBC 드라이버 로드
 			Class.forName(driver);
@@ -39,7 +40,7 @@ public class UserDao {
 		stmt.setString(3, user.getCustomer_user_name());
 		stmt.setString(4, user.getCustomer_user_address());
 		stmt.setString(5, user.getCustomer_user_phoneNumber());
-		stmt.setString(6, user.getCustomer_user_email());		
+		stmt.setString(6, customer_user_email);		
 		stmt.executeUpdate();		// 쿼리 실행
 	}	
 	
@@ -88,7 +89,7 @@ public class UserDao {
 		}
         return exUser;				
     }
-
+	
 	// findId 아이디 찾기
 	public boolean findId(User user) throws ClassNotFoundException {
 		String customer_user_id = null;
@@ -177,7 +178,6 @@ public class UserDao {
 	    }
 	    return exUser;			
 	}
-		
 }
 		
 		
