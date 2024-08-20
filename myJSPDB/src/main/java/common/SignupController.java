@@ -45,8 +45,10 @@ public class SignupController extends HttpServlet {
 		String name = request.getParameter("customer_user_name");
 		String address = request.getParameter("customer_user_address");
 		String phoneNumber = request.getParameter("customer_user_phoneNumber");
-		String email = request.getParameter("customer_user_email");
-		// ¸ğµ¨ °´Ã¼ »ı¼º ¹× µ¥ÀÌÅÍ ÀúÀå
+		String emailId = request.getParameter("customer_user_email1");
+		String emailDomain = request.getParameter("customer_user_email2");
+		String email = emailId + "@" + emailDomain;
+		// ëª¨ë¸ ê°ì²´ ìƒì„± ë° ë°ì´í„° ì €ì¥
 		User user = new User();
 		user.setCustomer_user_id(id);
 		user.setCustomer_user_pwd(password);
@@ -56,17 +58,17 @@ public class SignupController extends HttpServlet {
 		user.setCustomer_user_email(email);
 		
 		try {
-			// È¸¿ø°¡ÀÔ Ã³¸®
-			userDao.insertUser(user);			
+			// íšŒì›ê°€ì… ì²˜ë¦¬
+			userDao.insertUser(user, emailId, emailDomain);			
 		} catch(Exception e) {
-			// È¸¿ø °¡ÀÔ ½ÇÆĞ Ã³¸®
+			// íšŒì› ê°€ì… ì‹¤íŒ¨ ì²˜ë¦¬
 			request.setAttribute("errorMessage", e.getMessage());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/fail.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 		
-		// °¡ÀÔ °á°ú¿¡ µû¶ó ÀûÀıÇÑ ºä·Î ÀÌµ¿
+		// ê°€ì… ê²°ê³¼ì— ë”°ë¼ ì ì ˆí•œ ë·°ë¡œ ì´ë™
 		request.setAttribute("id", user.getCustomer_user_id());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/success.jsp");
 		dispatcher.forward(request, response);
