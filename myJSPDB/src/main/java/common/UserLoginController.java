@@ -52,20 +52,27 @@ public class UserLoginController extends HttpServlet {
             boolean exUser = userDao.login(user);            
 
             if (exUser) {
-                // ·Î±×ÀÎ ¼º°ø Ã³¸®
+                // ë¡œê·¸ì¸ ì„±ê³µ ì²˜ë¦¬
                 request.setAttribute("id", user.getCustomer_user_id());
-                request.setAttribute("name", user.getCustomer_user_name());  // ·Î±×ÀÎ ÈÄ ÀÌ¸§À» º¸¿©ÁÖ±â À§ÇØ name ¼Ó¼º°ª °¡Á®¿À±â
+                request.setAttribute("name", user.getCustomer_user_name());  // ë¡œê·¸ì¸ í›„ ì´ë¦„ì„ ë³´ì—¬ì£¼ê¸° ìœ„í•´ name ì†ì„±ê°’ ê°€ì ¸ì˜¤ê¸°
+                
+                // ë¡œê·¸ì¸ ìœ ì§€ ì²´í¬ë°•ìŠ¤ê°€ ì„ íƒëœ ê²½ìš° ì¿ í‚¤ë¥¼ ìƒì„±
+				/*
+				 * if (rememberMe != null && rememberMe.equals("on")) { Cookie userCookie = new
+				 * Cookie("user", id); userCookie.setMaxAge(30 * 24 * 60 * 60); // ì¿ í‚¤ ìœ íš¨ ê¸°ê°„ì„
+				 * 30ì¼ë¡œ ì„¤ì • response.addCookie(userCookie); }
+				 */
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/loginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
-                // ·Î±×ÀÎ ½ÇÆĞ Ã³¸®
+                // ë¡œê·¸ì¸ ì‹¤íŒ¨ ì²˜ë¦¬
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (Exception e) {
-            // ¿¹¿Ü Ã³¸®
+            // ì˜ˆì™¸ ì²˜ë¦¬
             e.printStackTrace();
-            request.setAttribute("errorMessage", "·Î±×ÀÎ Ã³¸® Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+            request.setAttribute("errorMessage", "ë¡œê·¸ì¸ ì²˜ë¦¬ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
             dispatcher.forward(request, response);
         }
