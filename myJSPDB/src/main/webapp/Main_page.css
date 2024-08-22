@@ -1,13 +1,12 @@
 @charset "UTF-8";
 
-.nav-rigth{
-	   text-align: center;
+#nav-rigth{
+	   
 	   float:right;
 	   position:absolute;
-	   right: 30px;
-	   top: 20px;
+	   right: -650px;
 	   font-size: 15px;
-	  display:inline-block;
+	   display:inline-block;
 }
 .nav-link{
 	text-align: center;
@@ -33,4 +32,15 @@
 	position: static;
 	right: 20px;
 	display: inline-block;
+}
+
+.nav-item {
+	padding-right: 40px;
+}
+.navbar-nav {
+	text-align: center;
+	float:right;
+	position: absolute;
+	right: 650px;
+	display:inline-block;
 }
