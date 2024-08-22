@@ -7,7 +7,7 @@ public class UserDao {
 	final String driver = "org.mariadb.jdbc.Driver";
 	final String DB_IP = "localhost";
 	final String DB_PORT = "3306";
-	final String DB_NAME = "customer";
+	final String DB_NAME = "project";
 	final String DB_URL1 = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
 	private static final String DB_USER = "root";
 	private static final String DB_PASSWORD = "1234";
