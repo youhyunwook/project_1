@@ -14,32 +14,39 @@
 <body>
 <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
   <div class="bg-dark p-4">
-    <h5 class="text-body-emphasis h4">Logo.img</h5>
+    
     <span class="text-body-secondary">
     	<span class= "nav-rigth">
-        	<a class = "nav-link" href = "login_Succes.jsp">로그인</a>
+        	
   		</span>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="NewFile.jsp">Home</a>
+    <h5 class="text-body-emphasis h4">Logo.img</h5>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">element</a>
+          <a class="nav-link" href="#">기업 소개</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">element</a>
+          <a class="nav-link" href="#">공지사항</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">element</a>
+          <a class="nav-link" href="#">문의 게시판</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href = "#">element</a>
+          <a class="nav-link" href = "#">의뢰 게시판</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href = "#">솔루션</a>
+        </li>
+        <li>
+        <a class = "nav-link" id ="nav-rigth"  href = "loginMain.jsp"><small>로그인</small></a>
         </li>
       </ul>
+      
     </div>
   </div>  
 </nav>
