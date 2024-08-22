@@ -3,71 +3,71 @@ package common;
 import java.sql.*;
 
 public class AdminDao {
-		// µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö, URL, »ç¿ëÀÚ¸í, ºñ¹Ğ¹øÈ£ ¼³Á¤
+		// ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„, URL, ì‚¬ìš©ìëª…, ë¹„ë°€ë²ˆí˜¸ ì„¤ì •
 		final String driver = "org.mariadb.jdbc.Driver";
 		final String DB_IP = "localhost";
 		final String DB_PORT = "3306";
-		final String DB_NAME = "admin";
+		final String DB_NAME = "project";
 		final String DB_URL1 = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
 		private static final String DB_USER = "root";
 		private static final String DB_PASSWORD = "1234";
 		
-		// »ç¿ëÀÚ Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡ »ğÀÔÇÏ´Â ¸Ş¼Òµå
+		// ì‚¬ìš©ì ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì— ì‚½ì…í•˜ëŠ” ë©”ì†Œë“œ
 		public void insertAdmin(Admin admin) throws SQLException{
 			Connection connection = null;
 			try {
-				// MariaDB JDBC µå¶óÀÌ¹ö ·Îµå
+				// MariaDB JDBC ë“œë¼ì´ë²„ ë¡œë“œ
 				Class.forName(driver);
-				// µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á »ı¼º
+				// ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ìƒì„±
 				connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
 				if(connection != null) {
-					System.out.println("DB Á¢¼Ó ¼º°ø");
+					System.out.println("DB ì ‘ì† ì„±ê³µ");
 				}
 			} catch(ClassNotFoundException e) {
-				// µå¶óÀÌ¹ö Å¬·¡½º¸¦ Ã£À» ¼ö ¾øÀ» ¶§ÀÇ ¿¹¿Ü Ã³¸®
-				System.out.println("µå¶óÀÌ¹ö ·Îµå ½ÇÆĞ");
+				// ë“œë¼ì´ë²„ í´ë˜ìŠ¤ë¥¼ ì°¾ì„ ìˆ˜ ì—†ì„ ë•Œì˜ ì˜ˆì™¸ ì²˜ë¦¬
+				System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì‹¤íŒ¨");
 				e.printStackTrace();
 			} catch(SQLException e) {
-				// µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ½ÇÆĞ ½ÃÀÇ ¿¹¿Ü Ã³¸®
-				System.out.println("DB Á¢¼Ó ½ÇÆĞ");
+				// ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì‹¤íŒ¨ ì‹œì˜ ì˜ˆì™¸ ì²˜ë¦¬
+				System.out.println("DB ì ‘ì† ì‹¤íŒ¨");
 				e.printStackTrace();
 			}
-			// È¸¿ø°¡ÀÔ ¾÷µ¥ÀÌÆ® (SQL Äõ¸®¸¦ ÁØºñÇÏ°í »ç¿ëÀÚ Á¤º¸¸¦ »ğÀÔ)
+			// íšŒì›ê°€ì… ì—…ë°ì´íŠ¸ (SQL ì¿¼ë¦¬ë¥¼ ì¤€ë¹„í•˜ê³  ì‚¬ìš©ì ì •ë³´ë¥¼ ì‚½ì…)
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO adminuser (id, pwd, name, Em_code) VALUES (?, ?, ?, ?)");
 			stmt.setString(1, admin.getId());
 			stmt.setString(2, admin.getPwd());
 			stmt.setString(3, admin.getName());
 			stmt.setString(4, admin.getEm_code());		
-			stmt.executeUpdate();		// Äõ¸® ½ÇÇà
+			stmt.executeUpdate();		// ì¿¼ë¦¬ ì‹¤í–‰
 		}	
 		
-		// °ü¸®ÀÚ ·Î±×ÀÎ È®ÀÎ ¸Ş¼Òµå
+		// ê´€ë¦¬ì ë¡œê·¸ì¸ í™•ì¸ ë©”ì†Œë“œ
 		public boolean adminLogin(Admin admin) {
 	        Connection connection = null;
-	        ResultSet rs = null;   // ¹İÈ¯°ª µ¥ÀÌÅÍ ÀúÀå °ø°£ ÃÊ±âÈ­
+	        ResultSet rs = null;   // ë°˜í™˜ê°’ ë°ì´í„° ì €ì¥ ê³µê°„ ì´ˆê¸°í™”
 	        PreparedStatement stmt = null;
 	        boolean exAdmin = false;
 	        try {
 	            Class.forName(driver);
 	            connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
 	            if (connection != null) {
-	                System.out.println("DB Á¢¼Ó ¼º°ø");
+	                System.out.println("DB ì ‘ì† ì„±ê³µ");
 	            }            
 	            stmt = connection.prepareStatement("SELECT * FROM adminuser WHERE id = ? AND pwd = ?");
 	            stmt.setString(1, admin.getId());
 	            stmt.setString(2, admin.getPwd());
 	            rs = stmt.executeQuery();
 	            
-	        	// Äõ¸® ½ÇÇà °á°ú°¡ Á¸ÀçÇÏ¸é À¯È¿ÇÑ »ç¿ëÀÚ·Î °£ÁÖ
-	            if (rs.next()) {  // ResultSet Ä¿¼­¸¦ ´ÙÀ½ÇàÀ¸·Î ÀÌµ¿ÇÏ´Â ¸Ş¼Òµå(¹İÈ¯°ª: boolean)
-	            	admin.setName(rs.getString("name")); // ·Î±×ÀÎ ÈÄ º¸¿©ÁÙ ÀÌ¸§À» °¡Á®¿À±â À§ÇÑ name ¼Ó¼º ¼³Á¤
+	        	// ì¿¼ë¦¬ ì‹¤í–‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ë©´ ìœ íš¨í•œ ì‚¬ìš©ìë¡œ ê°„ì£¼
+	            if (rs.next()) {  // ResultSet ì»¤ì„œë¥¼ ë‹¤ìŒí–‰ìœ¼ë¡œ ì´ë™í•˜ëŠ” ë©”ì†Œë“œ(ë°˜í™˜ê°’: boolean)
+	            	admin.setName(rs.getString("name")); // ë¡œê·¸ì¸ í›„ ë³´ì—¬ì¤„ ì´ë¦„ì„ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ name ì†ì„± ì„¤ì •
 	            	exAdmin = true;                
 	            }
 	        } catch (ClassNotFoundException e) {
-	            System.out.println("µå¶óÀÌ¹ö ·Îµå ½ÇÆĞ");
+	            System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì‹¤íŒ¨");
 	            e.printStackTrace();
 	        } catch (SQLException e) {
-	            System.out.println("DB Á¢¼Ó ½ÇÆĞ");
+	            System.out.println("DB ì ‘ì† ì‹¤íŒ¨");
 	            e.printStackTrace();
 	        } finally {
 				try {
