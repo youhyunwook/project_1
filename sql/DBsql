@@ -1,0 +1,42 @@
+CREATE TABLE `CustomerDB` (
+  `Customer_user_id` char(12) PRIMARY KEY,
+  `Customer_user_pwd` char(16),
+  `Customer_user_name` char(12),
+  `Customer_user_address` char(100),
+  `Customer_user_PhoneNumber` char(12),
+  `Customer_user_Email` char(100)
+);
+
+CREATE TABLE `AdminDB` (
+  `id` char(12) PRIMARY KEY,
+  `name` char(12),
+  `pwd` char(16),
+  `Em_code` char(10)
+);
+
+CREATE TABLE `posts` (
+  `inquiry_id` integer  AUTO_INCREMENT PRIMARY KEY,
+  `Customer_user_name` char(12),
+  `title` varchar(50),
+  `body` varchar(1000) COMMENT 'Content of the post'
+);
+
+CREATE TABLE `announcement` (
+  `Ann_id` integer  AUTO_INCREMENT PRIMARY KEY,
+  `Ann_author_name` char(12),
+  `Ann_title` char(100),
+  `Ann_body` varchar(1000)
+);
+
+CREATE TABLE `adminPost` (
+  `inquiry_id` integer,
+  `admin_name` char(12),
+  `Answer` char(250)
+);
+
+CREATE TABLE `Analysis_request` (
+  `request_number` integer AUTO_INCREMENT PRIMARY KEY,
+  `Customer_user_name` char(12),
+  `request_title` char(100),
+  `request_body` varchar(1000)
+);
