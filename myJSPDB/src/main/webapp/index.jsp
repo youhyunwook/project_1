@@ -4,9 +4,7 @@
 
 <html>
 <head>
-<!-- 네비게이션바 전용 스타일 -->
 <style>
-
         .navbar-nav {
             display: flex;
             justify-content: center;
@@ -69,10 +67,10 @@
           <a class="nav-link" href = "#">솔루션</a>
         </li>
         <li>
-        <a class = "nav-link" id ="nav-rigth"  href = "loginMain.jsp"><small>로그인</small></a>
+       
         </li>
       </ul>
-      
+       <a class = "nav-link" id ="nav-rigth"  href = "loginMain.jsp"><small>로그인</small></a>
     </div>
   </div>  
 </nav>
@@ -89,7 +87,6 @@
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
-<hr>
 <br><br>
   <div class="container marketing">
 
@@ -162,9 +159,7 @@
   </footer>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-   
-
 </body>
 <script src = "./bootstrap/js/bootstrap.min.js "></script>
+<script src="Main_page.js"></script>
 </html>
