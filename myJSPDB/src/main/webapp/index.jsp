@@ -19,7 +19,7 @@
     	<span class= "nav-rigth">
         	
   		</span>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark-tertiary">
   <div class="container-fluid">
     <h5 class="text-body-emphasis h4">Logo.img</h5>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
