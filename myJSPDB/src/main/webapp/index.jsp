@@ -4,6 +4,32 @@
 
 <html>
 <head>
+<!-- 네비게이션바 전용 스타일 -->
+<style>
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-item {
+            margin: 0 10px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: black;
+        }
+  
+        #nav-rigth {
+            margin-left: auto;
+            white-space: nowrap;
+        }
+</style>
 <link href="Main_page.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
