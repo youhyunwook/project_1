@@ -6,6 +6,7 @@
 <head>
 <style>
         .navbar-nav {
+           white-space: nowrap;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,10 +16,12 @@
             margin: 0;
         }
         .nav-item {
+           white-space: nowrap;
             margin: 0 10px;
         }
 
         .nav-link {
+           white-space: nowrap;
             text-decoration: none;
             color: black;
         }
@@ -26,6 +29,7 @@
         #nav-rigth {
             margin-left: auto;
             white-space: nowrap;
+           color: white;
         }
 </style>
 <link href="Main_page.css" rel="stylesheet">
@@ -38,12 +42,7 @@
 <body>
 <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
   <div class="bg-dark p-4">
-    
-    <span class="text-body-secondary">
-    	<span class= "nav-rigth">
-        	
-  		</span>
-    <nav class="navbar navbar-expand-lg bg-dark-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark-tertiary">
   <div class="container-fluid">
     <h5 class="text-body-emphasis h4">Logo.img</h5>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,15 +65,14 @@
         <li class="nav-item">
           <a class="nav-link" href = "#">솔루션</a>
         </li>
-        <li>
-       
-        </li>
+           
       </ul>
-       <a class = "nav-link" id ="nav-rigth"  href = "loginMain.jsp"><small>로그인</small></a>
+    <a class = "nav-link" id ="nav-rigth"  href = "loginMain.jsp"><small>로그인</small></a>
     </div>
+    
   </div>  
 </nav>
-    </span>
+
   </div>
 </div>
 <nav class="navbar navbar-dark bg-dark">
