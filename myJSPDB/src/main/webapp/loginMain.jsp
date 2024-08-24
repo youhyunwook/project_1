@@ -111,6 +111,7 @@
                                 <div class="card-front">
                                     <div class="center-wrap">
                                         <div class="section text-center">
+                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
                                             <h4 class="mb-4 pb-3">Customer Log In</h4>
                                             <div class="form-group">
                                                 <input type="text" id="customer_user_id" name="customer_user_id" class="form-style" placeholder="Enter Your Id" required>
@@ -128,6 +129,7 @@
                                 <div class="card-back">
                                     <div class="center-wrap">
                                         <div class="section text-center">
+                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
                                             <h4 class="mb-4 pb-3">Admin Log In</h4>
                                             <div class="form-group">
                                                 <input type="text" name="logname" class="form-style" placeholder="Enter Your Id" id="logname" autocomplete="off">
