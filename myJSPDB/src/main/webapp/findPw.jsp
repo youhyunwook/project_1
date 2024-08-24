@@ -12,19 +12,24 @@
 </head>
 <body>	
 	<div class="container">
-		<h1>비밀번호 찾기</h1>
+	<div class="card-front" style="position:relative; max-height:700px;">
+		<h1 style="text-align: center;">Find Password</h1>
 		<form action="UserFindPwdController" method="post">
-			<label for="customer_user_id"> 아이디</label>
-			<input type="text" id="customer_user_id" name="customer_user_id" required><br>
-			
-			<label for="customer_user_name"> 이름</label>
-			<input type="text" id="customer_user_name" name="customer_user_name" required><br>
-			
-			<label for="customer_user_email"> 이메일</label>
-			<input type="text" id="customer_user_email" name="customer_user_email" required><br>
-
-			<button type="submit">찾   기</button>
-			<p><a href = "loginMain.jsp">로그인 화면으로 이동</a></p>				
+		<div class="form-group">
+			<label for="customer_user_id"> ID</label>
+			<input type="text" id="customer_user_id" name="customer_user_id" class="form-style_b1" required><br>
+		</div>
+		<div class="form-group">
+			<label for="customer_user_name"> NAME</label>
+			<input type="text" id="customer_user_name" name="customer_user_name" class="form-style_b1" required><br>
+		</div>
+		<div class="form-group">
+			<label for="customer_user_email"> E-MAIL</label>
+			<input type="text" id="customer_user_email" name="customer_user_email" class="form-style_b1" required><br>
+		</div>
+		
+			<button type="submit" class="btn" style="margin-left: 50px; margin-bottom:20px;">Find</button>&nbsp;
+			<button type="button" class="btn" style="margin-right:50px; margin-bottom:20px;" onclick="window.location.href='loginMain.jsp'">Login page</button>					
 		</form>
 	</div>
 </body>
