@@ -12,42 +12,56 @@
 
 </head>
 <body>
-	<div class="container">
-		<h1>방문자 회원 가입</h1>
-		<form action="signup" method="post">
-			<label for="customer_user_id"> 아이디</label>
-			<input type="text" id="customer_user_id" name="customer_user_id" required><br>
-		
-			<label for="customer_user_pwd"> 패스워드</label>
-			<input type="text" id="customer_user_pwd" name="customer_user_pwd" required><br>
-		
-			<label for="customer_user_name"> 이름</label>
-			<input type="text" id="customer_user_name" name="customer_user_name" required><br>
-			
-			<label for="customer_user_address"> 주소</label>
-			<input type="text" id="customer_user_address" name="customer_user_address" required><br>
-			
-			<label for="customer_user_phoneNumber"> 전화번호</label>
-			<input type="text" id="customer_user_phoneNumber1" name="customer_user_phoneNumber" required><br>
-			<p>전화번호는 - 를 빼고 적어주세요</p>
-		
-			<label for="customer_user_email"> 이메일</label><br>
-			<input id="customer_user_email1" type="text" name="customer_user_email1" placeholder="이메일 ID" required>
-            @
-            <input type="text" id="customer_user_email2" name="customer_user_email2" placeholder="도메인" required>
-            <select id="customer_user_email3" name="customer_user_email3" required>
-                <option value="">직접입력</option> <!-- 기타 도메인을 선택할 수 있는 옵션 -->
-                <option value="gmail.com">gmail.com</option>
-                <option value="naver.com">naver.com</option>
-                <option value="daum.net">daum.net</option>
-                <option value="kakao.com">kakao.com</option>                
-            </select><br>
-            <p>이메일은 정확하게 적어주세요 (ID/PW 분실 시 필요)</p>
-
-			<button type="submit">가 입</button>
-			<p><button type="button" onclick="window.location.href='loginMain.jsp'">로그인 화면가기</button></p>			
-		</form>
-	</div>
+    <div class="container">
+   		<div class="card-front" style="position:relative; max-height:700px;">
+        <h1 style="text-align: center; margin-top:50px;">Customer Sign Up</h1>
+        <form action="signup" method="post">
+            <div class="form-group">
+                <label for="customer_user_id">ID</label><br>
+                <input type="text" id="customer_user_id" name="customer_user_id" class="form-style_b1" placeholder="Enter UserId to use" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_user_pwd">PASSWORD</label><br>
+                <input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="Enter UserPassword to use" class="form-style_b1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_user_name">NAME</label><br>
+                <input type="text" id="customer_user_name" name="customer_user_name" placeholder="Enter your Name" class="form-style_b1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_user_address">ADDRESS</label><br>
+                <input type="text" id="customer_user_address" name="customer_user_address" placeholder="Enter your Address" class="form-style_b1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_user_phoneNumber">PHONE NUMBER</label><br>
+                <input type="text" id="customer_user_phoneNumber" name="customer_user_phoneNumber" placeholder="Enter your PhoneNumber without '-'" class="form-style_b1" required>
+                <p>전화번호는 - 를 빼고 적어주세요</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_user_email">EMAIL</label><br>
+                <input type="text" id="customer_user_email1" name="customer_user_email1" class="form-style_b2" placeholder="Enter your Email Id" required>
+                @
+                <input type="text" id="customer_user_email2" name="customer_user_email2" class="form-style_b2" placeholder="Choose OR Enter your Domain" required>
+                <select id="customer_user_email3" name="customer_user_email3" class="form-style_b3" required>
+                    <option value="">직접입력</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="kakao.com">kakao.com</option>
+                </select>
+                <p>이메일은 정확하게 적어주세요 (ID/PW 분실 시 필요)</p>
+            </div>
+            
+            <button type="submit" class="btn" style="margin-left: 35px; margin-bottom:20px;"> Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn" onclick="window.location.href='loginMain.jsp'">Back to Login</button>
+        </form>
+    </div>
+    </div>
 	<script>
         document.getElementById('customer_user_email3').addEventListener('change', function() {
             var domainInput = document.getElementById('customer_user_email2');
