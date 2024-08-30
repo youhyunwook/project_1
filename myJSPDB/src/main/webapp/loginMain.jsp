@@ -135,11 +135,11 @@
                                         	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
                                             <h4 class="mb-4 pb-3">Admin Log In</h4>
                                             <div class="form-group">
-                                                <input type="text" name="logname" class="form-style" placeholder="Enter Your Id" id="logname" autocomplete="off">
+                                                <input type="text" name="id" class="form-style" placeholder="Enter Your Id" id="id" autocomplete="off">
                                                 <i class="input-icon uil uil-user"></i>
                                             </div>  
                                             <div class="form-group mt-2">
-                                                <input type="email" name="logemail" class="form-style" placeholder="Enter Your Password" id="logemail" autocomplete="off">
+                                                <input type="password" name="pwd" class="form-style" placeholder="Enter Your Password" id="pwd" autocomplete="off">
                                                 <i class="input-icon uil uil-at"></i>
                                             </div>  
                                            
