@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -50,20 +51,21 @@ public class AdminLoginController extends HttpServlet {
             boolean exAdmin = adminDao.adminLogin(admin);            
 
             if (exAdmin) {
-                // ·Î±×ÀÎ ¼º°ø Ã³¸®
-                request.setAttribute("id", admin.getId());
-                request.setAttribute("name", admin.getName());  // ·Î±×ÀÎ ÈÄ ÀÌ¸§À» º¸¿©ÁÖ±â À§ÇØ name ¼Ó¼º°ª °¡Á®¿À±â
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/loginSuccess.jsp");
+                // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+            	HttpSession session = request.getSession();
+                session.setAttribute("id", admin.getId());
+                session.setAttribute("name", admin.getName());  // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ name ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index2.html");
                 dispatcher.forward(request, response);
             } else {
-                // ·Î±×ÀÎ ½ÇÆÐ Ã³¸®
+                // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (Exception e) {
-            // ¿¹¿Ü Ã³¸®
+            // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
             e.printStackTrace();
-            request.setAttribute("errorMessage", "·Î±×ÀÎ Ã³¸® Áß ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù.");
+            request.setAttribute("errorMessage", "ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
             dispatcher.forward(request, response);
         }
