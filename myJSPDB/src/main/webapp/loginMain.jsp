@@ -111,6 +111,7 @@
                                 <div class="card-front">
                                     <div class="center-wrap">
                                         <div class="section text-center">
+                                        <form action="login" method="post">
                                         	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
                                             <h4 class="mb-4 pb-3">Customer Log In</h4>
                                             <div class="form-group">
@@ -121,14 +122,16 @@
                                                 <input type="password" id="customer_user_pwd" name="customer_user_pwd" class="form-style" placeholder="Enter Your Password" required>
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
-                                            <button type="submit" class="btn mt-4">Submit</button> <button type="button" onclick="window.location.href='signup.jsp'" class="btn mt-5">SignUp</button>
+                                            <button type="submit" class="btn mt-4" >Submit</button> <button type="button" onclick="window.location.href='signup.jsp'" class="btn mt-5">SignUp</button>
                                             <p class="mb-0 mt-4 text-center"><a href="findId.jsp" class="link">Forgot your id?</a> &nbsp;<span> / </span> &nbsp; <a href="findPw.jsp" class="link">Forgot your password?</a></p>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-back">
                                     <div class="center-wrap">
                                         <div class="section text-center">
+                                        <form action="adminlogin" method="post">
                                         	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
                                             <h4 class="mb-4 pb-3">Admin Log In</h4>
                                             <div class="form-group">
@@ -141,6 +144,7 @@
                                             </div>  
                                            
                                             <button type="submit" class="btn mt-4">Submit</button> <button type="button" onclick="window.location.href='adminSignup.jsp'" class="btn mt-5">SignUp</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
