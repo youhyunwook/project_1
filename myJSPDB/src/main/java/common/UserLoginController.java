@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -53,8 +54,9 @@ public class UserLoginController extends HttpServlet {
 
             if (exUser) {
                 // 로그인 성공 처리
-                request.setAttribute("id", user.getCustomer_user_id());
-                request.setAttribute("name", user.getCustomer_user_name());  // 로그인 후 이름을 보여주기 위해 name 속성값 가져오기
+            	HttpSession session = request.getSession();
+            	session.setAttribute("id", user.getCustomer_user_id());
+                session.setAttribute("name", user.getCustomer_user_name());  // 로그인 후 이름을 보여주기 위해 name 속성값 가져오기
                 
                 // 로그인 유지 체크박스가 선택된 경우 쿠키를 생성
 				/*
@@ -62,7 +64,7 @@ public class UserLoginController extends HttpServlet {
 				 * Cookie("user", id); userCookie.setMaxAge(30 * 24 * 60 * 60); // 쿠키 유효 기간을
 				 * 30일로 설정 response.addCookie(userCookie); }
 				 */
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/loginSuccess.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index2.html");
                 dispatcher.forward(request, response);
             } else {
                 // 로그인 실패 처리
