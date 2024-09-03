@@ -21,7 +21,7 @@ CREATE TABLE `posts` (
   `body` varchar(1000),
   `admin_id` char(12),
   `answer` char(255),
-  `cereate_date` timestamp
+  `create_date` timestamp
 );
 
 CREATE TABLE `announcement` (
@@ -29,7 +29,7 @@ CREATE TABLE `announcement` (
   `Ann_author_id` char(12),
   `Ann_title` char(100),
   `Ann_body` varchar(1000),
-  `cereate_date` timestamp
+  `create_date` timestamp
 );
 
 CREATE TABLE `analysis_request` (
@@ -42,7 +42,7 @@ CREATE TABLE `analysis_request` (
   `MAE` float,
   `Evaluation_indicators` float,
   `request_file` longblob,
-  `cereate_date` timestamp
+  `create_date` timestamp
 );
 
 ALTER TABLE `announcement` ADD FOREIGN KEY (`Ann_author_id`) REFERENCES `adminuser` (`id`);
