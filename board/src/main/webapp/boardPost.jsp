@@ -62,14 +62,16 @@
     ResultSet rs = null;
     boolean hasData = false; // 데이터를 가져왔는지 여부를 확인하는 변수
     
+    // a태그를 통해 url에 넘겨준 inquiry_id를 가져옴
+    String InquiryId = request.getParameter("inquiry_id");
+    
     try {
         Class.forName(driver);
         // 데이터베이스 연결
         conn = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
         stmt = conn.createStatement();
         
-        // user_id는 user 테이블에서 가져와 변수에 저장하는 것으로 변경해야함.
-        String sql = "select * from posts where Customer_user_id ="+"'user1'";
+        String sql = "select * from posts where inquiry_id = '"+InquiryId+"';";
         rs = stmt.executeQuery(sql);
         
         while (rs.next()) {
@@ -101,8 +103,9 @@
         }
         
         if (!hasData) {
+        // 해당하는 게시글 고유 id를 찾을 수 없을 때
 %>
-    <p>No data found in the database with inquiry_id = 1.</p>
+    <p>No data found in the database with inquiry_id = <%= InquiryId %></p>
 <%
         }
         
