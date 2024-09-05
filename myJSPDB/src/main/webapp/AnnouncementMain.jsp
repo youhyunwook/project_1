@@ -1,6 +1,9 @@
 <%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.Statement, java.sql.PreparedStatement " %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="javax.servlet.http.HttpServletRequest" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="common.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,6 +55,14 @@
 	    Statement stmt = null;
 	    ResultSet rs = null;
 /* 	    boolean hasData = false; // 데이터를 가져왔는지 여부를 확인하는 변수 */
+
+ 		// 세션 객체를 가져와서 사용자 역할을 확인합니다.
+        HttpSession login_session = request.getSession(false); // 세션이 존재하지 않으면 null을 반환
+        String useRole = null;
+        
+        if (login_session != null) {
+            useRole = (String) session.getAttribute("useRole");
+        }
 
 		int pageSize = 5; // 한페이지에 표시할 게시글 수
 		int pageNumber = 1; // 현재 페이지 번호
@@ -105,7 +116,7 @@
         %>
 		
 			<li>
-				<%= title %><br>
+				<a href="AnnouncementPost.jsp?Ann_id=<%= id %>"><%= title %></a><br>
 				<small> 작성자: <%= admin_id %>  |  게시일: <%= create_date %></small>
 			</li>
 			<hr>
@@ -158,7 +169,15 @@
             <%
                 }
             %>
-            <button onclick="location.href='AnnouncementWrite.jsp'">등록</button>
+            <%
+            // Check user role from session            
+            if ("admin".equals(useRole)) {
+        	%>
+        	<button onclick="location.href='AnnouncementWrite.jsp'">등록</button>
+        	<%
+            }
+            
+   			%>     
         </div>
 	</div>
 </body>
