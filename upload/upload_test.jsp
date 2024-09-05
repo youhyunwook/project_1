@@ -75,7 +75,7 @@
                             out.println("<p>게시글과 CSV 파일이 성공적으로 저장되었습니다!</p>");
 
                             // Python 스크립트 실행 및 진행 상황 모니터링
-                            String pythonScriptPath = "C:\\Users\\mit\\Desktop\\py\\ml_model.py";
+                            String pythonScriptPath = getServletContext().getRealPath("/ml_model.py");
                             ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath);
                             processBuilder.redirectErrorStream(true); // 에러 스트림을 출력 스트림과 합침
                             Process process = processBuilder.start();
