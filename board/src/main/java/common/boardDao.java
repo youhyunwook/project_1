@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
+
 public class boardDao {
 	final String driver = "org.mariadb.jdbc.Driver";
 	final String DB_IP = "localhost";
@@ -29,7 +31,7 @@ public class boardDao {
 				("INSERT INTO posts (Customer_user_id, title, body) VALUES (?, ?, ?)");
 		stmt.setString(1, board.getCustomer_user_id());
 		stmt.setString(2, board.getTitle());
-		stmt.setString(3, board.getBody());		
+		stmt.setString(3, board.getBody());
 		stmt.executeUpdate();
 		
 	}catch (ClassNotFoundException e) {

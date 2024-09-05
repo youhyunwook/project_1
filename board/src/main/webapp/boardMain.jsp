@@ -11,6 +11,19 @@
 <meta charset="UTF-8">
 <title>BoardMain</title>
 </head>
+<script>
+	function check_login(){
+		var customerUserId = '<%= session.getAttribute("userid") %>';  // 세션에서 유저 ID 가져옴
+		
+		if (!customerUserId || customerUserId == "null"){
+			alert("로그인이 필요합니다. \n로그인 페이지로 넘어갑니다.");
+			window.location.href = "loginMain.jsp";
+		} else {
+			window.location.href = "boardUpload.jsp";
+		}
+	}
+</script>
+
 <style>
 	#title{
 		text-align: center;
@@ -32,6 +45,7 @@
 	}
 	#button{
 		text-align: right;
+		width: 1000px;
 	}
 </style>
 <body>
@@ -39,7 +53,7 @@
 	<div><h1>navbar</h1></div>
 	<!-- 게시판 제목 -->
 	<div id='title'>
-		<h1>xx게시판</h1>
+		<h1>문의사항</h1>
 	</div>
 	
 	<!-- DB에서 게시글의 제목을 가져와 목록으로 나열 -->
@@ -79,7 +93,7 @@
 	            String cereate_date = rs.getString("cereate_date");
                     
         %>
-		
+        
 			<li>
 				<a id='' href='boardPost.jsp?inquiry_id=<%= inquiry_id %>'><%= title %><br></a>
 				<small>작성자: <%= Customer_user_id %>  |  게시일: <%= cereate_date %></small>
@@ -110,7 +124,7 @@
 	</div>
 	<!-- 게시글 등록 페이지로 이동 버튼 -->
 	<div id='button'>
-		<button onclick="location.href='boardUpload.jsp'">게시글 등록</button>
+		<button onclick='check_login()'>문의사항 작성</button>
 	</div>
 	</div>
 </body>

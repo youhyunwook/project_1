@@ -11,18 +11,6 @@
 <meta charset="UTF-8">
 <title>BoardPost</title>
 </head>
-<script>
-	function confirm_del(){
-		var decision = confirm("정말 삭제 하시겠습니까?");
-		if (decision){
-			var chk_pwd = prompt("회원님의 비밀번호를 입력해주세요.")
-			if (chk_pwd == user_pwd){
-				alert("삭제 되었습니다.");
-				// DB에서 삭제
-			}
-		}
-	}
-</script>
 <style>
 	#title{
 		text-align: center;
@@ -83,8 +71,27 @@
             String admin_id = rs.getString("admin_id");
             String answer = rs.getString("answer");
             String cereate_date = rs.getString("cereate_date");
+            
 	%>
+		<script>
+		function confirm_del() {
+			var decision = confirm("정말 삭제 하시겠습니까?");
+			if (decision) {
+				var sessionUserId = "<%= session.getAttribute("userid") %>";
+				var postOwnerId = "<%= Customer_user_id %>";
+				
+				if (sessionUserId === postOwnerId) {
+					alert("삭제 되었습니다.");
+					// 삭제 처리로 이동
+					window.location.href = 'deletePost.jsp?inquiry_id=<%= InquiryId %>';
+				} else {
+					alert("삭제 권한이 없습니다.");
+				}
+			}
+		}
+		</script>
         <div id='title'>
+        	<h1>문의사항 작성</h1>
             <h2><%= title %></h2>
             <p><small>작성자: <%= Customer_user_id %> | 게시일: <%= cereate_date %></small></p>
         </div><br>
@@ -94,10 +101,10 @@
             <div class='right'></div>
         </div><br>
         <div id='button'>
-            <button type="submit" onclick="location.href='xx.jsp'">답변</button>
-            <button type="submit" onclick="location.href='xx.jsp'">수정</button>
-            <button onclick="confirm_del()">삭제</button>
-        </div>
+            <button type="button" onclick="window.location.href='answer.jsp?post=<%= title %>'">답변</button>
+            <button type="button" onclick="window.location.href='xx.jsp'">수정</button>
+            <button type="button" onclick="confirm_del()">삭제</button>
+        </div>	
     </form>
 <%
         }

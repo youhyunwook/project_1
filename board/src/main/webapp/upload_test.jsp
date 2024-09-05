@@ -1,80 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.*, java.sql.*, javax.servlet.*, javax.servlet.http.*, org.apache.commons.fileupload.*, org.apache.commons.fileupload.disk.*, org.apache.commons.fileupload.servlet.*, java.util.List" %>
 <!DOCTYPE html>
-<!-- 업로드 테스트 페이지 입니다 이것으로 의뢰게시판을 만들 예쩡입니다. -->
 <html>
 <head>
-<link href="Main_page.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<title>upload Test page</title>
+    <meta charset="UTF-8">
+    <title>업로드 페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-  <div class="bg-dark p-4">
-    <h5 class="text-body-emphasis h4">Logo.img</h5>
-    <span class="text-body-secondary">
-    	<span class= "nav-rigth">
-        	<a class = "nav-link" href = "login_Succes.jsp">로그인</a>
-  		</span>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="NewFile.jsp">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <div id ="nav-link"><a class="nav-link active" href="#">123</a></div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">element</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">element</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href = "#">element</a>
-        </li>
-      </ul>
+    <div class="container mt-4">
+        <h1 class="mb-4">게시글 작성</h1>
+        <form action="upload_test.jsp" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="requestTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="requestTitle" name="request_title" placeholder="제목을 입력해주세요" required>
+            </div>
+            <div class="mb-3">
+                <label for="requestBody" class="form-label">Contents</label>
+                <textarea class="form-control" id="requestBody" name="request_body" rows="15" placeholder="내용을 입력해주세요" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="fileUpload" class="form-label">파일 업로드</label>
+                <input class="form-control" type="file" id="fileUpload" name="request_file" accept=".csv" required />
+                <p id="fileError" style="color: red;"></p>
+            </div>
+            <button id="submit-button" type="submit" class="btn btn-outline-dark">Upload</button>
+        </form>
+
+        <%
+            if ("POST".equalsIgnoreCase(request.getMethod())) {
+                DiskFileItemFactory factory = new DiskFileItemFactory();
+                ServletFileUpload upload = new ServletFileUpload(factory);
+
+                try {
+                    List<FileItem> items = upload.parseRequest(request);
+                    String requestTitle = null;
+                    String requestBody = null;
+                    InputStream fileContent = null;
+
+                    for (FileItem item : items) {
+                        if (item.isFormField()) {
+                            if ("request_title".equals(item.getFieldName())) {
+                                requestTitle = item.getString("UTF-8");  // 인코딩 설정
+                            } else if ("request_body".equals(item.getFieldName())) {
+                                requestBody = item.getString("UTF-8");  // 인코딩 설정
+                            }
+                        } else {
+                            if ("request_file".equals(item.getFieldName())) {
+                                fileContent = item.getInputStream();
+                            }
+                        }
+                    }
+
+                    if (requestTitle != null && requestBody != null && fileContent != null) {
+                        Connection connection = null;
+                        PreparedStatement statement = null;
+
+                        try {
+                            // 데이터베이스 연결
+                            Class.forName("org.mariadb.jdbc.Driver");
+                            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8", "root", "1234");
+
+                            // SQL 쿼리 준비
+                            String sql = "INSERT INTO posts (title, body, cereate_date) VALUES (?, ?, NOW())";
+                            statement = connection.prepareStatement(sql);
+                            statement.setString(1, requestTitle);
+                            statement.setString(2, requestBody);
+
+                            // 쿼리 실행
+                            statement.executeUpdate();
+                            out.println("<p>게시글이 성공적으로 저장되었습니다!</p>");
+
+                            // Python 스크립트 실행 및 진행 상황 모니터링
+                            /*
+                            String pythonScriptPath = getServletContext().getRealPath("/ml_model.py");
+                            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath);
+                            processBuilder.redirectErrorStream(true); // 에러 스트림을 출력 스트림과 합침
+                            Process process = processBuilder.start();
+
+                            // 읽기 스레드로 진행 상황 모니터링
+                            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                                String line;
+                                while ((line = reader.readLine()) != null) {
+                                    out.println("<p>" + line + "</p>");
+                                }
+                            }
+
+                            process.waitFor(); // 스크립트 실행이 끝날 때까지 대기
+                            */
+                            // 리다이렉트
+                            response.sendRedirect("boardMain.jsp");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            out.println("<p>오류 발생: " + e.getMessage() + "</p>");
+                        } finally {
+                            if (statement != null) statement.close();
+                            if (connection != null) connection.close();
+                        }
+                    } else {
+                        out.println("<p>모든 필드를 채워주세요.</p>");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    out.println("<p>파일 업로드 실패: " + e.getMessage() + "</p>");
+                }
+            }
+        %>
     </div>
-  </div>  
-</nav>
-</span>
-</div>
-</div>
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-<hr>
-<br><br>
-<div class="notice-board">
-<h1 class="board-title">게시글 작성</h1>
-<br><br>
-    <form id="uploadForm">
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Title</label>
-  <input type="text" class="form-control" id="" placeholder="제목을 입력해주세요">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Contents</label>
- <textarea class="form-control" rows="15" placeholder="내용을 입력해주세요"></textarea>
-</div>
-        <label for="fileUpload">파일 업로드</label>
-        <input class="form-control" type="file" id="fileUpload" accept=".csv" />
-        <p id="fileError" style="color: red;"></p>
-        <button id= "submit-button" type="submit" class="btn btn-outline-dark">Upload</button>
-    </form>
-</div>
-    <script src="Main_page.js"></script>
 </body>
 </html>

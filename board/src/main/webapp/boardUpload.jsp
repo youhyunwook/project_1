@@ -6,27 +6,43 @@
 <meta charset="UTF-8">
 <title>Upload</title>
 </head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <style>
-	#title{
-		width: 500px; 
+	#posttitle{
+		text-align: center;
 	}
-	#body{
-		width: 500px;
+	#container{
+		text-align: center;
+		height: 500px;
+		display: flex;
 	}
 	#button{
-		width: 500px;
-		text-align: right;
+		text-align: center;
+	}
+	div.left{
+		flex: 1;
+	}
+	div.center{
+		flex: 3;
+	}
+	div.right{
+		flex: 1;
 	}
 </style>
 <body>
 	<form action="submitPost" method='post'>
-		<div>
-			<label for='title'>제목</label><br>
-			<input type="text" id='title' name='title' value='제목을 입력하세요...' required>
-		</div><br>
-		<div id='textbox'>
-			<label for='body'>내용</label><br>
-			<input type="text" id="body" name="body" value='내용을 입력하세요...' required>
+		<div id='container'>
+			<div class='left'></div>
+			<div class='center'>
+				<div id='posttitle'>
+					<label for="title" class="form-label">Title</label>
+            		<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요" required>
+				</div><br>
+				<label for="body" class="form-label">Contents</label>
+            	<textarea class="form-control" id="body" name="body" rows="15" placeholder="내용을 입력해주세요" required></textarea>
+            </div>
+            <div class='right'></div>
 		</div>
 		<div id='button'>
 			<button type="submit">등록</button>
