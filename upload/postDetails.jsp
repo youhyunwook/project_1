@@ -39,7 +39,7 @@
                     conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
                     // SQL 쿼리 작성
-                    String sql = "SELECT request_title, Customer_user_id, request_body, actual_prediction, RMSE, MAE, Evaluation_indicators, cereate_date FROM analysis_request WHERE request_number = ?";
+                    String sql = "SELECT request_title, Customer_user_id, request_body, actual_prediction, RMSE, MAE, Evaluation_indicators, create_date FROM analysis_request WHERE request_number = ?";
                     pstmt = conn.prepareStatement(sql);
                     pstmt.setInt(1, requestNumber);
                     rs = pstmt.executeQuery();
@@ -52,7 +52,7 @@
                         float RMSE = rs.getFloat("RMSE");
                         float MAE = rs.getFloat("MAE");
                         float evaluationIndicators = rs.getFloat("Evaluation_indicators");
-                        Timestamp createDate = rs.getTimestamp("cereate_date");
+                        Timestamp createDate = rs.getTimestamp("create_date");
 
                         // Get image data from Blob
                         InputStream imageStream = actualPredictionBlob.getBinaryStream();

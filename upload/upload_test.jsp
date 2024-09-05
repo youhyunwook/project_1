@@ -7,8 +7,23 @@
     <meta charset="UTF-8">
     <title>업로드 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="Main_page.js"></script>
+    <style>
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding-top: 20%;
+            font-size: 60px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-4">
@@ -30,7 +45,15 @@
             <button id="submit-button" type="submit" class="btn btn-outline-dark">Upload</button>
         </form>
 
+        <div id="loading" class="loading">
+        	<button class="btn btn-info" type="button" disabled>
+  				<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+ 		 		<span role="status">파일을 업로드하는 동안 잠시만 기다려 주세요...</span>
+			</button>
+		</div>
+
         <%
+            // 서버 측 처리
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 DiskFileItemFactory factory = new DiskFileItemFactory();
                 ServletFileUpload upload = new ServletFileUpload(factory);
@@ -65,7 +88,7 @@
                             connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8", "root", "1234");
 
                             // SQL 쿼리 준비
-                            String sql = "INSERT INTO analysis_request (request_title, request_body, request_file, cereate_date) VALUES (?, ?, ?, NOW())";
+                            String sql = "INSERT INTO analysis_request (request_title, request_body, request_file, create_date) VALUES (?, ?, ?, NOW())";
                             statement = connection.prepareStatement(sql);
                             statement.setString(1, requestTitle);
                             statement.setString(2, requestBody);
@@ -73,43 +96,41 @@
 
                             // 쿼리 실행
                             statement.executeUpdate();
-                            out.println("<p>게시글과 CSV 파일이 성공적으로 저장되었습니다!</p>");
 
-                            // Python 스크립트 실행 및 진행 상황 모니터링
+                            // Python 스크립트 실행 
                             String pythonScriptPath = getServletContext().getRealPath("/ml_model.py");
                             ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath);
                             processBuilder.redirectErrorStream(true); // 에러 스트림을 출력 스트림과 합침
                             Process process = processBuilder.start();
 
-                            // 읽기 스레드로 진행 상황 모니터링
+                          
                             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                                 String line;
                                 while ((line = reader.readLine()) != null) {
-                                    out.println("<p>" + line + "</p>");
-                                }a
+                                   
+                                }
                             }
 
                             process.waitFor(); // 스크립트 실행이 끝날 때까지 대기
 
-                            // 리다이렉트
-                            response.sendRedirect("listPosts.jsp");
+                            // 성공 응답
+                            response.getWriter().write("success");
                         } catch (Exception e) {
                             e.printStackTrace();
-                            out.println("<p>오류 발생: " + e.getMessage() + "</p>");
+                            response.getWriter().write("error: " + e.getMessage());
                         } finally {
                             if (statement != null) statement.close();
                             if (connection != null) connection.close();
                         }
                     } else {
-                        out.println("<p>모든 필드를 채워주세요.</p>");
+                        
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    out.println("<p>파일 업로드 실패: " + e.getMessage() + "</p>");
+                    response.getWriter().write("error: 파일 업로드 실패: " + e.getMessage());
                 }
             }
         %>
     </div>
-<script src="Main_page.js"></script>
 </body>
 </html>

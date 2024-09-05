@@ -38,7 +38,7 @@
                         conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
                         // SQL 쿼리 작성
-                        String sql = "SELECT request_number, request_title, Customer_user_id, cereate_date FROM analysis_request ORDER BY cereate_date DESC";
+                        String sql = "SELECT request_number, request_title, Customer_user_id, create_date FROM analysis_request ORDER BY create_date DESC";
                         stmt = conn.createStatement();
                         rs = stmt.executeQuery(sql);
 
@@ -47,7 +47,7 @@
                             int requestNumber = rs.getInt("request_number");
                             String requestTitle = rs.getString("request_title");
                             String customerUserId = rs.getString("Customer_user_id");
-                            Timestamp createDate = rs.getTimestamp("cereate_date");
+                            Timestamp createDate = rs.getTimestamp("create_date");
                 %>
                 <tr>
                     <td><%= requestNumber %></td>
