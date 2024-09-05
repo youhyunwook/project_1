@@ -43,9 +43,9 @@
                     for (FileItem item : items) {
                         if (item.isFormField()) {
                             if ("request_title".equals(item.getFieldName())) {
-                                requestTitle = item.getString();
+                                requestTitle = item.getString("UTF-8");  // 인코딩 설정
                             } else if ("request_body".equals(item.getFieldName())) {
-                                requestBody = item.getString();
+                                requestBody = item.getString("UTF-8");  // 인코딩 설정
                             }
                         } else {
                             if ("request_file".equals(item.getFieldName())) {
@@ -61,7 +61,7 @@
                         try {
                             // 데이터베이스 연결
                             Class.forName("org.mariadb.jdbc.Driver");
-                            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/project", "root", "1234");
+                            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8", "root", "1234");
 
                             // SQL 쿼리 준비
                             String sql = "INSERT INTO analysis_request (request_title, request_body, request_file, cereate_date) VALUES (?, ?, ?, NOW())";
