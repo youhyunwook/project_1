@@ -35,7 +35,8 @@
 	}
 </style>
 <body>
-	<div>	
+	<div>
+	<div><h1>navbar</h1></div>
 	<!-- 게시판 제목 -->
 	<div id='title'>
 		<h1>xx게시판</h1>
@@ -80,7 +81,7 @@
         %>
 		
 			<li>
-				<%= title %><br>
+				<a id='' href='boardPost.jsp?inquiry_id=<%= inquiry_id %>'><%= title %><br></a>
 				<small>작성자: <%= Customer_user_id %>  |  게시일: <%= cereate_date %></small>
 			</li>
 			<hr>
