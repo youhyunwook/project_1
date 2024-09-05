@@ -64,7 +64,7 @@ public class UserLoginController extends HttpServlet {
 				 * Cookie("user", id); userCookie.setMaxAge(30 * 24 * 60 * 60); // 쿠키 유효 기간을
 				 * 30일로 설정 response.addCookie(userCookie); }
 				 */
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/index2.html");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/customerLoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
                 // 로그인 실패 처리

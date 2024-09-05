@@ -49,23 +49,23 @@ public class AdminLoginController extends HttpServlet {
 		
 		try {
             boolean exAdmin = adminDao.adminLogin(admin);            
-
+            
             if (exAdmin) {
-                // �α��� ���� ó��
+                // 셔션정보를 저장
             	HttpSession session = request.getSession();
                 session.setAttribute("id", admin.getId());
-                session.setAttribute("name", admin.getName());  // �α��� �� �̸��� �����ֱ� ���� name �Ӽ��� ��������
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/index2.html");
+                session.setAttribute("useRole", "admin");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/adminLoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
-                // �α��� ���� ó��
+                // 로그인 실패시 페이지처리
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (Exception e) {
-            // ���� ó��
+            // 로그인 오류시 페이지 처리
             e.printStackTrace();
-            request.setAttribute("errorMessage", "�α��� ó�� �� ������ �߻��߽��ϴ�.");
+            request.setAttribute("errorMessage", "로그인 문제가 발생하였습니다.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
             dispatcher.forward(request, response);
         }
