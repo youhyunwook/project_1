@@ -4,9 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>게시글 상세보기</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+<script src="del.js"></script>
 <body>
     <div class="container">
         <h2 class="mt-4">게시글 상세보기</h2>
@@ -61,6 +67,7 @@
                         imageStream.close();
                         String imageBase64 = java.util.Base64.getEncoder().encodeToString(imageBytes);
                 %>
+                <!-- 요소 부분 -->
                 <h3><%= requestTitle %></h3>
                 <p><strong>작성자:</strong> <%= customerUserId %></p>
                 <p><strong>내용:</strong></p>
@@ -70,6 +77,8 @@
                 <p><strong>평가 지표:</strong> <%= evaluationIndicators %></p>
                 <p><strong>예측 이미지:</strong></p>
                 <img src="data:image/jpeg;base64,<%= imageBase64 %>" alt="Actual Prediction Image" style="max-width: 100%; height: auto;"/>
+                <button id="delete-button" class="btn btn-danger" data-request-number="<%= requestNumber %>">삭제</button>
+                <!-- 요소 끝 -->
                 <% 
                     } else {
                         out.println("<p>게시글을 찾을 수 없습니다.</p>");
