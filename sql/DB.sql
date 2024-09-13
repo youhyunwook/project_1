@@ -21,7 +21,8 @@ CREATE TABLE `posts` (
   `body` varchar(1000),
   `admin_id` char(12),
   `answer` char(255),
-  `create_date` timestamp
+  `created_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `answered_date` timestamp NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `announcement` (
