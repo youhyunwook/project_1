@@ -14,7 +14,7 @@
 <body>
     <div class="container">
    		<div class="card-front" style="position:relative; max-height:700px;">
-        <h1 style="text-align: center; margin-top:50px;">Customer Sign Up</h1>
+        <h3 style="text-align: center; margin-top:50px;">Customer Sign Up</h3>
         <form action="signup" method="post">
             <div class="form-group">
                 <label for="customer_user_id">ID</label><br>
@@ -32,8 +32,8 @@
             </div>
             
             <div class="form-group">
-                <label for="customer_user_address">ADDRESS</label><br>
-                <input type="text" id="customer_user_address" name="customer_user_address" placeholder="Enter your Address" class="form-style_b1" required>
+                <label for="customer_user_company">COMPANY NAME</label><br>
+                <input type="text" id="customer_user_company" name="customer_user_company" placeholder="Enter your Company Name" class="form-style_b1" required>
             </div>
             
             <div class="form-group">
@@ -47,7 +47,7 @@
                 <input type="text" id="customer_user_email1" name="customer_user_email1" class="form-style_b2" placeholder="Enter your Email Id" required>
                 @
                 <input type="text" id="customer_user_email2" name="customer_user_email2" class="form-style_b2" placeholder="Choose OR Enter your Domain" required>
-                <select id="customer_user_email3" name="customer_user_email3" class="form-style_b3" required>
+                <select id="customer_user_email3" name="customer_user_email3" class="form-style_b3">
                     <option value="">직접입력</option>
                     <option value="gmail.com">gmail.com</option>
                     <option value="naver.com">naver.com</option>

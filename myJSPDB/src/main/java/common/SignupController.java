@@ -43,7 +43,7 @@ public class SignupController extends HttpServlet {
 		String id = request.getParameter("customer_user_id");
 		String password = request.getParameter("customer_user_pwd");
 		String name = request.getParameter("customer_user_name");
-		String address = request.getParameter("customer_user_address");
+		String company = request.getParameter("customer_user_company");
 		String phoneNumber = request.getParameter("customer_user_phoneNumber");
 		String emailId = request.getParameter("customer_user_email1");
 		String emailDomain = request.getParameter("customer_user_email2");
@@ -53,7 +53,7 @@ public class SignupController extends HttpServlet {
 		user.setCustomer_user_id(id);
 		user.setCustomer_user_pwd(password);
 		user.setCustomer_user_name(name);
-		user.setCustomer_user_address(address);
+		user.setCustomer_user_company(company);
 		user.setCustomer_user_phoneNumber(phoneNumber);
 		user.setCustomer_user_email(email);
 		

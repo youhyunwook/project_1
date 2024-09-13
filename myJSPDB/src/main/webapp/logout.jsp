@@ -10,7 +10,7 @@
 	<%
 	session.removeAttribute("customer_user_id");
 	session.removeAttribute("id");
-	response.sendRedirect("index2.html");
+	response.sendRedirect("index3.jsp");
 	%>
 </body>
 </html>

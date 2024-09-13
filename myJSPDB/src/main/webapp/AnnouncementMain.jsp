@@ -8,33 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="Announcement_style.css" />
 <title>AnnouncementMain</title>
 </head>
-<style>
-	#title{
-		text-align: center;
-	}
-	#content_box{
-		width: 1000px;
-		border: 1px solid black;
-		margin: 0 auto;
-	}
-	ul{
-		padding-left: 10px; 
-	}
-	li{
-		list-style-type: none;
-	}
-	li>p{
-		text-align: right;
-		padding: 0 0 10px 10px;
-	}
-	#button{
-		text-align: right;
-	}
-</style>
 <body>
-	<div>	
+	
 	<!-- 게시판 제목 -->
 	<div id='title'>
 		<h1>공지사항</h1>
@@ -113,13 +91,13 @@
 	            String body = rs.getString("Ann_body");
 	            String create_date = rs.getString("create_date");
                     
-        %>
-		
+        %>		
+			<!--  화면 타이틀 -->
 			<li>
 				<a href="AnnouncementPost.jsp?Ann_id=<%= id %>"><%= title %></a><br>
 				<small> 작성자: <%= admin_id %>  |  게시일: <%= create_date %></small>
 			</li>
-			<hr>
+			
 		
 		<%
                 }

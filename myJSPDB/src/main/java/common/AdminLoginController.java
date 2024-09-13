@@ -53,7 +53,7 @@ public class AdminLoginController extends HttpServlet {
             if (exAdmin) {
                 // 셔션정보를 저장
             	HttpSession session = request.getSession();
-                session.setAttribute("id", admin.getId());
+                session.setAttribute("admin_id", admin.getId());
                 session.setAttribute("useRole", "admin");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/adminLoginSuccess.jsp");
                 dispatcher.forward(request, response);

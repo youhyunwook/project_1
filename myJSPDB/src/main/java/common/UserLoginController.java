@@ -55,8 +55,7 @@ public class UserLoginController extends HttpServlet {
             if (exUser) {
                 // 로그인 성공 처리
             	HttpSession session = request.getSession();
-            	session.setAttribute("id", user.getCustomer_user_id());
-                session.setAttribute("name", user.getCustomer_user_name());  // 로그인 후 이름을 보여주기 위해 name 속성값 가져오기
+            	session.setAttribute("id", user.getCustomer_user_id());                
                 
                 // 로그인 유지 체크박스가 선택된 경우 쿠키를 생성
 				/*

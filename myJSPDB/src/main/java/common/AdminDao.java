@@ -53,11 +53,12 @@ public class AdminDao {
 	            if (connection != null) {
 	                System.out.println("DB 접속 성공");
 	            }            
+	        
 	            stmt = connection.prepareStatement("SELECT * FROM adminuser WHERE id = ? AND pwd = ?");
 	            stmt.setString(1, admin.getId());
 	            stmt.setString(2, admin.getPwd());
 	            rs = stmt.executeQuery();
-	            
+	          
 	        	// 쿼리 실행 결과가 존재하면 유효한 사용자로 간주
 	            if (rs.next()) {  // ResultSet 커서를 다음행으로 이동하는 메소드(반환값: boolean)
 	            	admin.setName(rs.getString("name")); // 로그인 후 보여줄 이름을 가져오기 위한 name 속성 설정

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- bootStrap -->
 	<script src="../assets/js/color-modes.js"></script>
 	<link href="carousel.css" rel="stylesheet">
 	<link href="carousel.rtl.css" rel="stylesheet">
@@ -11,8 +12,6 @@
 	<meta name="description" content="">
 	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 	<meta name="generator" content="Hugo 0.122.0">
-	<title>BBA Main Page</title>
-	<link href="Main_page.css" rel="stylesheet">
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -20,10 +19,31 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="NewFile.css">
+	<link rel="stylesheet" href="Announcement_style.css" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		    $('.nav-link[href="AnnouncementMain.jsp"]').on('click', function(event) {
+		        event.preventDefault(); // 기본 링크 동작 방지
+		
+		        $.ajax({
+		            url: 'AnnouncementMain.jsp',
+		            type: 'GET',
+		            success: function(data) {
+		                $('main').html(data); // 'main' 태그의 내용을 가져온 데이터로 교체
+		            },
+		            error: function(xhr, status, error) {
+		                console.error('AJAX 요청 실패:', status, error);
+		            }
+		        });
+		    });
+		});
+	</script>
 	 <script>
         window.onload = function() {
             var logInOut = function() {
-                var navLink = document.getElementById('nav-rigth');
+                var navLink = document.getElementById('logout');
 
                 if (navLink != null) {
                     navLink.onclick = function(event) {
@@ -111,47 +131,41 @@
 <link href="carousel.css" rel="stylesheet">
 </head>
 <body>
-<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-<div class="bg-dark p-4">
-<nav class="navbar navbar-expand-lg bg-dark-tertiary">
-  <div class="container-fluid">
-    <h5 class="text-body-emphasis h4">Logo.img</h5>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>    
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">기업 소개</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="AnnouncementMain.jsp">공지사항</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">문의 게시판</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href = "#">의뢰 게시판</a>
-        </li>
-    
-           
-      </ul>
-    <p>{$customer_user_name} 님 안녕하세요</p>
-    <a class = "nav-link" id ="nav-rigth" href = "#">로그아웃</a>
-    </div>
-    
-  </div>  
-</nav>
+<!-- 네비게이션 바 -->
+	<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+		<div class="bg-dark p-4">
+			<nav class="navbar navbar-expand-lg bg-dark-tertiary">
+			<div class="container-fluid">
+				<h5 class="text-body-emphasis h4" onclick="location.href='index3.jsp'" style="cursor: pointer;">
+    			<img src="img/login_logo2.png" alt="로고" />
+   				</h5>
 
-  </div>
-</div>
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
+			<div class="navbar_links">  
+				<a class="nav-link" href="#" style="color:white;">기업 소개</a>
+	
+				<a class="nav-link" href="AnnouncementMain.jsp" style="color:white;">공지사항</a>
+	  
+				<a class="nav-link" href="QnA_main.jsp" style="color:white;">문의 게시판</a>     
+	
+				<a class="nav-link" href = "#" style="color:white;">의뢰 게시판</a>           
+			</div>
+			 <div class="btn-group" role="group" aria-label="Basic example" id="nav-rigth">
+				  <button type="button" class="btn btn-outline-light" onclick="window.location.href ='UserModify.jsp'">개인정보수정</button>
+				  <button type="button" id = "logout" class="btn btn-outline-light">로그아웃</button>
+			</div>
+			</div>
+			</nav> 
+		</div>  
+	</div>
+
+	<nav class="navbar navbar-dark bg-dark">
+  		<div class="container-fluid">
+    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      		<span class="navbar-toggler-icon"></span>
+    		</button>
+  		</div>
+	</nav>
+<!-- 네이게이션 바 끝 -->
 
 
     

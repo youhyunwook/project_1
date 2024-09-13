@@ -34,15 +34,16 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		// 회원가입 업데이트 (SQL 쿼리를 준비하고 사용자 정보를 삽입)
-		PreparedStatement stmt = connection.prepareStatement("INSERT INTO user (customer_user_id, customer_user_pwd, customer_user_name, customer_user_address, customer_user_phoneNumber, customer_user_email) VALUES (?, ?, ?, ?, ?, ?)");
+		PreparedStatement stmt = connection.prepareStatement("INSERT INTO user (customer_user_id, customer_user_pwd, customer_user_name, customer_user_company, customer_user_phoneNumber, customer_user_email) VALUES (?, ?, ?, ?, ?, ?)");
 		stmt.setString(1, user.getCustomer_user_id());
 		stmt.setString(2, user.getCustomer_user_pwd());
 		stmt.setString(3, user.getCustomer_user_name());
-		stmt.setString(4, user.getCustomer_user_address());
+		stmt.setString(4, user.getCustomer_user_company());
 		stmt.setString(5, user.getCustomer_user_phoneNumber());
 		stmt.setString(6, customer_user_email);		
 		stmt.executeUpdate();		// 쿼리 실행
 	}	
+	
 	
 	// 사용자 로그인 확인 메소드
 	public boolean login(User user) {
@@ -55,7 +56,7 @@ public class UserDao {
             connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
             if (connection != null) {
                 System.out.println("DB 접속 성공");
-            }            
+            }
             stmt = connection.prepareStatement("SELECT * FROM user WHERE customer_user_id = ? AND customer_user_pwd = ?");
             stmt.setString(1, user.getCustomer_user_id());
             stmt.setString(2, user.getCustomer_user_pwd());
@@ -178,6 +179,67 @@ public class UserDao {
 	    }
 	    return exUser;			
 	}
+	
+    // 사용자 정보 조회
+    public User getUserById(String userId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        User user = null;
+
+        try {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+
+            String sql = "SELECT * FROM user WHERE customer_user_id = ?";
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User();                
+                user.setCustomer_user_pwd(rs.getString("customer_user_pwd"));
+                user.setCustomer_user_name(rs.getString("customer_user_name"));
+                user.setCustomer_user_company(rs.getString("customer_user_company"));
+                user.setCustomer_user_phoneNumber(rs.getString("customer_user_phoneNumber"));
+                user.setCustomer_user_email(rs.getString("customer_user_email"));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+            if (connection != null && !connection.isClosed()) connection.close();
+        }
+
+        return user;
+    }
+
+    // 사용자 정보 수정
+    public void updateUser(User user) throws SQLException {
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+
+            String sql = "UPDATE user SET customer_user_pwd = ?, customer_user_name = ?, customer_user_company = ?, customer_user_phoneNumber = ?, customer_user_email = ? WHERE customer_user_id = ?";
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, user.getCustomer_user_pwd());
+            pstmt.setString(2, user.getCustomer_user_name());
+            pstmt.setString(3, user.getCustomer_user_company());
+            pstmt.setString(4, user.getCustomer_user_phoneNumber());
+            pstmt.setString(5, user.getCustomer_user_email());
+            pstmt.setString(6, user.getCustomer_user_id());
+            pstmt.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (pstmt != null) pstmt.close();
+            if (connection != null && !connection.isClosed()) connection.close();
+        }
+    }
 }
 		
 		

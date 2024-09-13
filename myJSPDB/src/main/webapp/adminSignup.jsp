@@ -14,8 +14,8 @@
 <body>
      <div class="container">
    		<div class="card-front" style="position:relative; max-height:700px;">
-        <h1 style="text-align: center;">Admin Sign Up</h1>
-        <form action="signup" method="post">
+        <h3 style="text-align: center;">Admin Sign Up</h3>
+        <form action="AdminSignup" method="post">
             <div class="form-group">
                 <label for="id">ID</label><br>
                 <input type="text" id="id" name="id" class="form-style_b1" placeholder="Enter UserId to use" required>
