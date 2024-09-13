@@ -1,3 +1,4 @@
+<%@page import="org.python.antlr.ast.Str"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*, java.sql.*, javax.servlet.*, javax.servlet.http.*, org.apache.commons.fileupload.*, org.apache.commons.fileupload.disk.*, org.apache.commons.fileupload.servlet.*, java.util.List" %>
@@ -26,6 +27,7 @@
     </style>
 </head>
 <body>
+
     <div class="container mt-4">
         <h1 class="mb-4">게시글 작성</h1>
         <form id="uploadForm" action="upload_test.jsp" method="post" enctype="multipart/form-data">
@@ -44,7 +46,7 @@
             </div>
             <button id="submit-button" type="submit" class="btn btn-outline-dark">Upload</button>
         </form>
-
+		<A href="listPosts.jsp"><button>리스트</button></A>
         <div id="loading" class="loading">
         	<button class="btn btn-info" type="button" disabled>
   				<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -53,6 +55,8 @@
 		</div>
 
         <%
+         String C_id = (String) session.getAttribute("id");
+
             // 서버 측 처리
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -88,12 +92,13 @@
                             connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8", "root", "1234");
 
                             // SQL 쿼리 준비
-                            String sql = "INSERT INTO analysis_request (request_title, request_body, request_file, create_date) VALUES (?, ?, ?, NOW())";
+                            String sql = "INSERT INTO analysis_request (Customer_user_id,request_title, request_body, request_file, create_date) VALUES (?, ?, ?, ?, NOW())";
                             statement = connection.prepareStatement(sql);
-                            statement.setString(1, requestTitle);
-                            statement.setString(2, requestBody);
-                            statement.setBinaryStream(3, fileContent, (int) fileContent.available());
-
+                            statement.setString(1, C_id);
+                            statement.setString(2, requestTitle);
+                            statement.setString(3, requestBody);
+                            statement.setBinaryStream(4, fileContent, (int) fileContent.available());
+                     
                             // 쿼리 실행
                             statement.executeUpdate();
 
@@ -107,14 +112,14 @@
                             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                                 String line;
                                 while ((line = reader.readLine()) != null) {
-                                   
+                                   out.print("<p>"+ line+"</p>");
                                 }
                             }
 
                             process.waitFor(); // 스크립트 실행이 끝날 때까지 대기
 
-                            // 성공 응답
-                            response.getWriter().write("success");
+                            response.sendRedirect("listPosts.jsp");
+                           
                         } catch (Exception e) {
                             e.printStackTrace();
                             response.getWriter().write("error: " + e.getMessage());
