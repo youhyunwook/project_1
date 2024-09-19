@@ -1,6 +1,8 @@
 package common;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,9 +60,12 @@ public class AdminLoginController extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/adminLoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
-                // 로그인 실패시 페이지처리
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
-                dispatcher.forward(request, response);
+           	 response.setContentType("text/html; charset=UTF-8");
+             PrintWriter out = response.getWriter();
+             out.println("<script type='text/javascript'>");
+             out.println("alert('로그인 실패. 다시 시도해 주세요.');");
+             out.println("window.history.back();");
+             out.println("</script>");
             }
         } catch (Exception e) {
             // 로그인 오류시 페이지 처리

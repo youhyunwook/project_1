@@ -1,6 +1,7 @@
 package common;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -66,15 +67,18 @@ public class UserLoginController extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/customerLoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
-                // 로그인 실패 처리
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
-                dispatcher.forward(request, response);
+            	 response.setContentType("text/html; charset=UTF-8");
+                 PrintWriter out = response.getWriter();
+                 out.println("<script type='text/javascript'>");
+                 out.println("alert('로그인 실패. 다시 시도해 주세요.');");
+                 out.println("window.history.back();");
+                 out.println("</script>");
             }
         } catch (Exception e) {
             // 예외 처리
             e.printStackTrace();
             request.setAttribute("errorMessage", "로그인 처리 중 오류가 발생했습니다.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/loginFail.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
             dispatcher.forward(request, response);
         }
 	}

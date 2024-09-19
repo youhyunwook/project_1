@@ -14,12 +14,13 @@ public class User_modify extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User loggedInUser = (User) session.getAttribute("loggedInUser");
-
-        if (loggedInUser != null) {
+        String loggedInUserId = (String) session.getAttribute("id"); // 사용자 ID 가져오기
+        System.out.println(loggedInUserId);
+        
+        if (loggedInUserId != null) {
             UserDao dao = new UserDao();
             try {
-                User user = dao.getUserById(loggedInUser.getCustomer_user_id());
+                User user = dao.getUserById(loggedInUserId); // ID로 사용자 정보 조회
                 request.setAttribute("user", user);
                 request.getRequestDispatcher("UserModify.jsp").forward(request, response);
             } catch (Exception e) {
@@ -32,13 +33,15 @@ public class User_modify extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User loggedInUser = (User) session.getAttribute("loggedInUser");
-
-        if (loggedInUser != null) {
+    	request.setCharacterEncoding("UTF-8");
+    	HttpSession session = request.getSession();
+        String loggedInUserId = (String) session.getAttribute("id"); // 사용자 ID 가져오기
+        System.out.println(loggedInUserId);
+        
+        if (loggedInUserId != null) {
             UserDao dao = new UserDao();
             User user = new User();
-            user.setCustomer_user_id(loggedInUser.getCustomer_user_id());
+            user.setCustomer_user_id(loggedInUserId); // 가져온 ID로 사용자 ID 설정
             user.setCustomer_user_pwd(request.getParameter("customer_user_pwd"));
             user.setCustomer_user_name(request.getParameter("customer_user_name"));
             user.setCustomer_user_company(request.getParameter("customer_user_company"));
@@ -48,16 +51,17 @@ public class User_modify extends HttpServlet {
             user.setCustomer_user_email(emailId + "@" + emailDomain);
 
             try {
-                dao.updateUser(user);
-                // Update the user information in the session
-                session.setAttribute("loggedInUser", user);
-                response.sendRedirect("userModify.jsp?success=1");
+                dao.updateUser(request, user);
+                // 세션에 사용자 정보 업데이트
+                session.setAttribute("user", user); // User 객체를 "user"로 저장
+                response.sendRedirect("index3.jsp");
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("error.jsp");
             }
         } else {
-            response.sendRedirect("loginMain.jsp");
+            response.sendRedirect("UserModify.jsp");
         }
     }
 }
+

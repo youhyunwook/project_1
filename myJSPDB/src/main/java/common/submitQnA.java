@@ -47,7 +47,7 @@ public class submitQnA extends HttpServlet {
 		HttpSession session = request.getSession();
         String title = request.getParameter("title");
         String body = request.getParameter("body");
-        String userId = (String) session.getAttribute("userid");
+        String userId = (String) session.getAttribute("id");
         
         QnA_board board = new QnA_board();
         board.setTitle(title);

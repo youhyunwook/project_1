@@ -1,4 +1,6 @@
 package common;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.sql.*;
 
@@ -216,13 +218,16 @@ public class UserDao {
     }
 
     // 사용자 정보 수정
-    public void updateUser(User user) throws SQLException {
+    public void updateUser(HttpServletRequest request,User user) throws SQLException {
         Connection connection = null;
         PreparedStatement pstmt = null;
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("id"); 
 
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+            String dbUrl = DB_URL1 + "?useUnicode=true&characterEncoding=UTF-8";
+            connection = DriverManager.getConnection(dbUrl, DB_USER, DB_PASSWORD);
 
             String sql = "UPDATE user SET customer_user_pwd = ?, customer_user_name = ?, customer_user_company = ?, customer_user_phoneNumber = ?, customer_user_email = ? WHERE customer_user_id = ?";
             pstmt = connection.prepareStatement(sql);
@@ -231,11 +236,19 @@ public class UserDao {
             pstmt.setString(3, user.getCustomer_user_company());
             pstmt.setString(4, user.getCustomer_user_phoneNumber());
             pstmt.setString(5, user.getCustomer_user_email());
-            pstmt.setString(6, user.getCustomer_user_id());
+            pstmt.setString(6, userId);
             pstmt.executeUpdate();
+            
+          
+           
+    
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // 예외를 다시 던져서 상위 레벨에서 처리할 수 있도록 함
         } finally {
+        	session.setAttribute("id", userId); // "id"는 여전히 사용자 ID로 유지
             if (pstmt != null) pstmt.close();
             if (connection != null && !connection.isClosed()) connection.close();
         }
