@@ -1,5 +1,70 @@
 <%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    // 요청 인코딩 설정
+    request.setCharacterEncoding("UTF-8");
+
+    String driver = "org.mariadb.jdbc.Driver";
+    String DB_IP = "localhost";
+    String DB_PORT = "3306";
+    String DB_NAME = "project";
+    String DB_USER = "root";
+    String DB_PASSWORD = "1234";
+    String DB_URL1 = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
+
+    String InquiryId = request.getParameter("inquiry_id");
+    String adminId = (String) session.getAttribute("admin_id");
+    String post_title = request.getParameter("post");
+    String answer = "";
+
+    Connection connection = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName(driver);
+        connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+        
+        // 기존 답변 가져오기
+        String selectSQL = "SELECT answer FROM posts WHERE inquiry_id = ?";
+        pstmt = connection.prepareStatement(selectSQL);
+        pstmt.setString(1, InquiryId);
+        rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            answer = rs.getString("answer");
+        }
+
+        rs.close();
+        pstmt.close();
+
+        if ("POST".equalsIgnoreCase(request.getMethod())) {  // 폼이 제출되었을 때 처리
+            String newAnswer = request.getParameter("body");
+           
+            String updateSQL = "UPDATE posts SET admin_id=?, answer=? WHERE inquiry_id=?";
+            pstmt = connection.prepareStatement(updateSQL);
+            pstmt.setString(1, adminId);
+            pstmt.setString(2, newAnswer);
+            pstmt.setString(3, InquiryId);
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                response.sendRedirect("QnA_main.jsp");
+            } else {
+                out.println("<script>alert('답변 등록에 실패했습니다.');</script>");
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        out.println("<script>alert('오류가 발생했습니다. 다시 시도해주세요.');</script>");
+    } finally {
+        if (rs != null) try { rs.close(); } catch (Exception e) { e.printStackTrace(); }
+        if (pstmt != null) try { pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+        if (connection != null) try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,68 +96,9 @@
     </style>
 </head>
 <body>
-    <%
-        String driver = "org.mariadb.jdbc.Driver";
-        String DB_IP = "localhost";
-        String DB_PORT = "3306";
-        String DB_NAME = "project";
-        String DB_USER = "root";
-        String DB_PASSWORD = "1234";
-        String DB_URL1 = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
-
-        String InquiryId = request.getParameter("inquiry_id");
-        String adminId = (String) session.getAttribute("admin_id");
-        String post_title = request.getParameter("post");
-        String answer = "";
-
-        Connection connection = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(driver);
-            connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
-
-            // 기존 답변 가져오기
-            String selectSQL = "SELECT answer FROM posts WHERE inquiry_id = ?";
-            pstmt = connection.prepareStatement(selectSQL);
-            pstmt.setString(1, InquiryId);
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                answer = rs.getString("answer");
-            }
-
-            rs.close();
-            pstmt.close();
-
-            if ("POST".equalsIgnoreCase(request.getMethod())) {  // 폼이 제출되었을 때 처리
-                String newAnswer = request.getParameter("body");
-
-                String updateSQL = "UPDATE posts SET admin_id=?, answer=? WHERE inquiry_id=?";
-                pstmt = connection.prepareStatement(updateSQL);
-                pstmt.setString(1, adminId);
-                pstmt.setString(2, newAnswer);
-                pstmt.setString(3, InquiryId);
-
-                int rowsAffected = pstmt.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    response.sendRedirect("QnA_main.jsp");
-                } else {
-                    out.println("<script>alert('답변 등록에 실패했습니다.');</script>");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.println("<script>alert('오류가 발생했습니다. 다시 시도해주세요.');</script>");
-        } finally {
-            if (rs != null) try { rs.close(); } catch (Exception e) { e.printStackTrace(); }
-            if (pstmt != null) try { pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
-            if (connection != null) try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
-        }
-    %>
-
+<!--네비게이션 바 로딩 -->    
+<jsp:include page="NavBar.jsp" />
+<!-- 네비게이션 바 로딩 -->
     <form action="" method='post'>
         <h1>문의사항 답변</h1>
         <div id='container'>

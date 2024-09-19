@@ -20,11 +20,11 @@
 
         int result = stmt.executeUpdate();
         if (result > 0) {
-            out.println("게시글이 성공적으로 삭제되었습니다.");
+           
             response.sendRedirect("QnA_main.jsp");
             
         } else {
-            out.println("게시글 삭제에 실패하였습니다.");
+           
         }
 
     } catch (Exception e) {

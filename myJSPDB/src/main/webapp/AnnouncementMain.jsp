@@ -9,10 +9,27 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="Announcement_style.css" />
+
 <title>AnnouncementMain</title>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isOpen = urlParams.get('navbarOpen') === 'true';
+
+    if (isOpen) {
+        document.querySelector('.navbar-toggler').classList.add('show');
+        document.querySelector('.navbar-collapse').classList.add('show');
+    }
+});
+</script>
 </head>
+
 <body>
-	
+<!--네비게이션 바 로딩 -->    
+<jsp:include page="NavBar.jsp" />
+<!-- 네비게이션 바 로딩 -->
+
 	<!-- 게시판 제목 -->
 	<div id='title'>
 		<h1>공지사항</h1>
@@ -92,11 +109,16 @@
 	            String create_date = rs.getString("create_date");
                     
         %>		
-			<!--  화면 타이틀 -->
-			<li>
-				<a href="AnnouncementPost.jsp?Ann_id=<%= id %>"><%= title %></a><br>
-				<small> 작성자: <%= admin_id %>  |  게시일: <%= create_date %></small>
+			 <!-- 화면 타이틀 -->
+			
+            <li>
+			    <a href="AnnouncementPost.jsp?Ann_id=<%= id %>" class="title_click" data-id="<%= id %>"><%= title %></a>
+			    <div class="info">
+			        <div class="author">작성자: <%= admin_id %></div>
+			        <div class="date">게시일: <%= create_date %></div>
+			    </div>
 			</li>
+
 			
 		
 		<%
@@ -123,40 +145,39 @@
         </ul>
 	</div>
 	<!-- 페이지네이션 링크 -->
-        <div id='button'>
-            <%
-                if (pageNumber > 1) {
-            %>
-            <a href="AnnouncementMain.jsp?page=<%= pageNumber - 1 %>">이전</a>
-            <%
-                }
-                for (int i = 1; i <= totalPages; i++) {
-                    if (i == pageNumber) {
-            %>
-            <strong><%= i %></strong>
-            <%
-                    } else {
-            %>
-            <a href="AnnouncementMain.jsp?page=<%= i %>"><%= i %></a>
-            <%
-                    }
-                }
-                if (pageNumber < totalPages) {
-            %>
-            <a href="AnnouncementMain.jsp?page=<%= pageNumber + 1 %>">다음</a>
-            <%
-                }
-            %>
-            <%
-            // Check user role from session            
-            if ("admin".equals(useRole)) {
-        	%>
-        	<button onclick="location.href='AnnouncementWrite.jsp'">등록</button>
-        	<%
-            }
-            
-   			%>     
-        </div>
-	</div>
+       <div id='button'>
+           <%
+               if (pageNumber > 1) {
+           %>
+           <a href="AnnouncementMain.jsp?page=<%= pageNumber - 1 %>">이전</a>
+           <%
+               }
+               for (int i = 1; i <= totalPages; i++) {
+                   if (i == pageNumber) {
+           %>
+           <strong><%= i %></strong>
+           <%
+                   } else {
+           %>
+           <a href="AnnouncementMain.jsp?page=<%= i %>"><%= i %></a>
+           <%
+                   }
+               }
+               if (pageNumber < totalPages) {
+           %>
+           <a href="AnnouncementMain.jsp?page=<%= pageNumber + 1 %>">다음</a>
+           <%
+               }
+           %>
+           <%
+           // Check user role from session            
+           if ("admin".equals(useRole)) {
+	       	%>
+	       	<button onclick="location.href='AnnouncementWrite.jsp'">등록</button>
+	       	<%
+	           }
+	           
+			%>     
+       </div>	
 </body>
 </html>

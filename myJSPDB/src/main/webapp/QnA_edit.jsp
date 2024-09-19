@@ -41,7 +41,7 @@
         String DB_URL1 = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
 
         String InquiryId = request.getParameter("inquiry_id");  // 수정할 게시글 ID
-        String userId = (String) session.getAttribute("userid"); // 세션에서 사용자 ID 가져오기
+        String userId = (String) session.getAttribute("id"); // 세션에서 사용자 ID 가져오기
         String postTitle = "";
         String postBody = "";
 
@@ -101,6 +101,9 @@
             if (connection != null) try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
         }
     %>
+<!--네비게이션 바 로딩 -->    
+<jsp:include page="NavBar.jsp" />
+<!-- 네비게이션 바 로딩 -->
 
     <form action="" method="post">
         <h1>게시글 수정</h1>

@@ -29,69 +29,7 @@
 	<link rel="stylesheet" href="NewFile.css">
 	
 	<title>BoardPost</title>
-	
-<style>
-     .bd-placeholder-img {
-       font-size: 1.125rem;
-       text-anchor: middle;
-       -webkit-user-select: none;
-       -moz-user-select: none;
-       user-select: none;
-     }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-
-
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
-      }
-
-      .bd-mode-toggle {
-        z-index: 1500;
-      }
-
-      .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
-      }
-</style>
 
 </head>
 <script>
@@ -125,39 +63,10 @@ function confirm_del(postId) {
 </script>
 
 <body>
-	<form action='' method='post'>
-	<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-		<div class="bg-dark p-4">
-			<nav class="navbar navbar-expand-lg bg-dark-tertiary">
-			<div class="container-fluid">
-				<h5 class="text-body-emphasis h4" onclick="location.href='index3.jsp'" style="cursor: pointer;">
-    			<img src="img/login_logo2.png" alt="로고" />
-   				</h5>
-
-			<div class="navbar_links">  
-				<a class="nav-link" href="#" style="color:white;">기업 소개</a>
-	
-				<a class="nav-link" href="AnnouncementMain.jsp" style="color:white;">공지사항</a>
-	  
-				<a class="nav-link" href="#" style="color:white;">문의 게시판</a>     
-	
-				<a class="nav-link" href = "#" style="color:white;">의뢰 게시판</a>           
-			</div>
-			<div class="btn-group" role="group" aria-label="Basic example" id="nav-rigth">
-				<a href="loginMain.jsp"><button type="button" class="btn btn-outline-light">로그인</button></a>
-			</div>
-			</div>
-			</nav> 
-		</div>  
-	</div>
-
-	<nav class="navbar navbar-dark bg-dark">
-  		<div class="container-fluid">
-    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      		<span class="navbar-toggler-icon"></span>
-    		</button>
-  		</div>
-	</nav>
+<!--네비게이션 바 로딩 -->    
+<jsp:include page="NavBar.jsp" />
+<!-- 네비게이션 바 로딩 -->
+<div id="main-content">
 	<%
     String driver = "org.mariadb.jdbc.Driver";
     String DB_IP = "localhost";
@@ -191,7 +100,7 @@ function confirm_del(postId) {
         String sql = "select * from announcement where Ann_id = '"+AnnId+"';";
         rs = stmt.executeQuery(sql);
         
-        while (rs.next()) {
+        if (rs.next()) {
             hasData = true; // 데이터를 가져왔으므로 true로 설정
             String Ann_id = rs.getString("Ann_id");
             String Ann_author_id = rs.getString("Ann_author_id");
@@ -199,6 +108,7 @@ function confirm_del(postId) {
             String body = rs.getString("Ann_body");
             String create_date = rs.getString("create_date");
 	%>
+	<div id="back_ann_main">
         <div id='title'>
             <h2><%= title %></h2>
             <p><small>작성자: <%= Ann_author_id %> | 게시일: <%= create_date %></small></p>
@@ -216,9 +126,10 @@ function confirm_del(postId) {
             <%
             }
             %>
-            <button type="button" onclick="location.href='AnnouncementMain.jsp'">목 록</button>
+            <button type="button" onclick="location.href='AnnouncementMain.jsp'" class="back_main">목 록</button>
         </div>
-    </form>
+	</div>
+
 <%
         }
         
@@ -239,6 +150,6 @@ function confirm_del(postId) {
         if (conn != null) try { conn.close(); } catch (Exception e) { e.printStackTrace(); }
     }
 %>
-
+</div>
 </body>
 </html>

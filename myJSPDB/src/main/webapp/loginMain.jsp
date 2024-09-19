@@ -12,7 +12,14 @@
 <link rel="stylesheet" href="login_style.css" />
 <meta charset="UTF-8">
 <title>로그인 화면</title>
-
+<style>
+body{
+background-color: #212529;
+}
+.container {
+background-color: #212529;
+}
+</style>
 </head>
 <body>
     <div class="section">
@@ -29,7 +36,7 @@
                                     <div class="center-wrap">
                                         <div class="section text-center">
                                         <form action="login" method="post">
-                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
+                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index3.jsp'"/>
                                             <h4 class="mb-4 pb-3">Customer Log In</h4>
                                             <div class="form-group">
                                                 <input type="text" id="customer_user_id" name="customer_user_id" class="form-style" placeholder="Enter Your Id" required>
@@ -49,7 +56,7 @@
                                     <div class="center-wrap">
                                         <div class="section text-center">
                                         <form action="adminlogin" method="post">
-                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index.jsp'"/>
+                                        	<img src="http://localhost:8080/myJSPDB/img/login_logo.png" style="margin-bottom: -20px;" onclick="window.location.href='index3.jsp'"/>
                                             <h4 class="mb-4 pb-3">Admin Log In</h4>
                                             <div class="form-group">
                                                 <input type="text" name="id" class="form-style" placeholder="Enter Your Id" id="id" autocomplete="off">
