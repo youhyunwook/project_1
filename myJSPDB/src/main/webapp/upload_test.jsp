@@ -11,18 +11,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="Main_page.js"></script>
     <style>
- .loading {
+.loading {
     display: none; /* 기본적으로 숨김 */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    top: 50%;
+    left: 50%; /* 왼쪽을 50%로 설정 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    width: auto; /* 너비를 자동으로 조정 */
+    height: auto; /* 높이를 자동으로 조정 */
+    background-color: transparent; /* 배경을 투명하게 설정 */
     text-align: center;
-    padding-top: 20%;
-    font-size: 20px; /* 크기를 적절히 조정 */
+    padding: 20px; /* 패딩 조정 */
+    font-size: 18px; /* 글자 크기 조정 */
+    border: none; /* 경계 제거 */
+    box-shadow: none; /* 그림자 제거 */
 }
+
 
 .spinner-border {
     animation: spin 1s linear infinite; /* 애니메이션 효과 */
@@ -36,7 +40,9 @@
     </style>
 </head>
 <body>
-
+    <!-- 네비게이션 바 로딩 -->    
+    <jsp:include page="NavBar.jsp" />
+    <!-- 네비게이션 바 로딩 -->
     <div class="container mt-4">
         <h1 class="mb-4">게시글 작성</h1>
         <form id="uploadForm" action="upload_test.jsp" method="post" enctype="multipart/form-data">
@@ -64,6 +70,7 @@
         </div>
 
         <%
+     
         String C_id = (String) session.getAttribute("id");
 
         // 서버 측 처리
@@ -80,9 +87,9 @@
                 for (FileItem item : items) {
                     if (item.isFormField()) {
                         if ("request_title".equals(item.getFieldName())) {
-                            requestTitle = item.getString("UTF-8");  // 인코딩 설정
+                            requestTitle = item.getString("UTF-8");
                         } else if ("request_body".equals(item.getFieldName())) {
-                            requestBody = item.getString("UTF-8");  // 인코딩 설정
+                            requestBody = item.getString("UTF-8");
                         }
                     } else {
                         if ("request_file".equals(item.getFieldName())) {
@@ -112,38 +119,45 @@
                         statement.executeUpdate();
 
                         // Python 스크립트 실행 
-                 String pythonScriptPath = "C:\\Users\\LEE\\Desktop\\ml_model.py";
+                        String pythonScriptPath = "C:\\Users\\LEE\\Desktop\\ml_model.py";
                         ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath);
-                        processBuilder.redirectErrorStream(true); // 에러 스트림을 출력 스트림과 합침
+                        processBuilder.redirectErrorStream(true);
                         Process process = processBuilder.start();
 
                         try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                             String line;
+                            StringBuilder output = new StringBuilder();
                             while ((line = reader.readLine()) != null) {
-                                response.getWriter().print("<p>" + line + "</p>");
+                                output.append("<p>").append(line).append("</p>");
                             }
+                            // 이 부분은 response.getWriter() 대신 로깅 또는 다른 방법으로 처리할 수 있습니다.
                         }
 
                         process.waitFor(); // 스크립트 실행이 끝날 때까지 대기
 
-                        response.sendRedirect("listPosts.jsp");
+                        response.sendRedirect("listPosts.jsp"); // 리다이렉트 호출
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        response.getWriter().write("error: " + e.getMessage());
+                        // 에러 메시지를 로깅하거나 다른 처리
                     } finally {
                         if (statement != null) statement.close();
                         if (connection != null) connection.close();
                     }
                 } else {
-                    response.getWriter().write("error: 모든 필드를 채워주세요.");
+                    // 모든 필드를 채우지 않았을 경우 처리 (이 부분도 에러 메시지를 출력하지 않고 다른 방법으로 처리 가능)
+                    response.sendRedirect("errorPage.jsp"); // 예시로 에러 페이지로 리다이렉트
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                response.getWriter().write("error: 파일 업로드 실패: " + e.getMessage());
+                // 이 부분에서도 response.getWriter()를 사용하지 않도록 주의
             }
         }
         %>
-    </div>
+
+    </div><br>
+    <!-- 푸터 바 로딩 -->    
+    <jsp:include page="Footer.jsp" />
+    <!-- 푸터 바 로딩 -->  
 </body>
 </html>
