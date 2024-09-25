@@ -39,6 +39,8 @@ CREATE TABLE `analysis_request` (
   `request_title` char(100),
   `request_body` varchar(1000),
   `actual_prediction` longblob,
+  `important` longblob,
+  `hitmap` longblob,
   `RMSE` float,
   `MAE` float,
   `Evaluation_indicators` float,
