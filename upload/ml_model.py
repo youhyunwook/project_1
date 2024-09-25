@@ -1,13 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+
 from math import sqrt
 from sklearn.metrics import mean_squared_error as MSE
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error
-from xgboost import XGBRegressor
+from xgboost import XGBRegressor, plot_importance
 from sklearn.model_selection import train_test_split, GridSearchCV, KFold
 import pymysql
 import io
+import seaborn as sns
+
 
 # MariaDB에 연결 및 CSV 파일 데이터 읽기
 db_config = {
@@ -23,7 +26,6 @@ connection = pymysql.connect(**db_config)
 
 try:
     with connection.cursor() as cursor:
-        # 가장 최근 request_number 찾기
         sql = 'SELECT MAX(request_number) FROM analysis_request'
         cursor.execute(sql)
         result = cursor.fetchone()
@@ -32,20 +34,17 @@ try:
         if latest_request_number is None:
             raise ValueError("No data found in the analysis_request table.")
 
-        # 가장 최근 request_number의 BLOB 데이터 읽기
         sql = 'SELECT request_file FROM analysis_request WHERE request_number = %s'
         cursor.execute(sql, (latest_request_number,))
         result = cursor.fetchone()
         
         if result:
             blob_data = result[0]
-            # BLOB 데이터를 파일처럼 읽기 위해 BytesIO 사용
             blob_stream = io.BytesIO(blob_data)
             df4 = pd.read_csv(blob_stream)
         else:
             raise ValueError(f"No BLOB data found for request_number {latest_request_number}.")
 finally:
-    # 연결 종료
     connection.close()
 
 # 독립변수 및 종속변수 정의
@@ -84,11 +83,11 @@ print(f"Adjusted R2_score : {round(adj_r2, 3)}")
 print(f"RMSE score : {round(rmse, 3)}")
 print(f"MAE score : {round(mae, 3)}")
 
-# 그래프 저장
+# 예측 vs 실제 그래프 저장
 plt.figure(figsize=(10, 6))
-plt.title('Prediction vs Actual (XGBoost)')
-plt.xlabel('Prediction')
-plt.ylabel('Actual')
+plt.title('Prediction vs Actual (XGBoost)', fontproperties=font_prop)
+plt.xlabel('Prediction', fontproperties=font_prop)
+plt.ylabel('Actual', fontproperties=font_prop)
 plt.grid()
 plt.scatter(y_pred_xgb, y_test, alpha=0.5)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2)
@@ -101,23 +100,41 @@ buffer.seek(0)
 image_data = buffer.getvalue()
 plt.close()
 
+# 특성 중요도 그리기
+fig, ax = plt.subplots(figsize=(10, 9))
+plot_importance(best_model_xgb, height=0.8, grid=False, ax=ax)
+plt.xlabel('특성 중요도', fontproperties=font_prop)
+plt.ylabel('변수명', fontproperties=font_prop)
+importance_buffer = io.BytesIO()
+plt.savefig(importance_buffer, format='jpeg')
+importance_buffer.seek(0)
+importance_image_data = importance_buffer.getvalue()
+plt.close()
+
+# 피어슨 상관계수 계산 및 히트맵 그리기
+corr = X.corr()
+plt.figure(figsize=(17, 10))
+sns.heatmap(corr, vmin=-1, vmax=1, cmap='coolwarm', annot=True, fmt=".2f", linewidths=.5)
+plt.title('히트맵', fontproperties=font_prop)
+heatmap_buffer = io.BytesIO()
+plt.savefig(heatmap_buffer, format='jpeg')
+heatmap_buffer.seek(0)
+heatmap_image_data = heatmap_buffer.getvalue()
+plt.close()
+
 # MariaDB에 연결 및 데이터 업데이트
 connection = pymysql.connect(**db_config)
 
 try:
     with connection.cursor() as cursor:
-        # SQL 쿼리 준비
         sql = '''UPDATE analysis_request
-                 SET actual_prediction = %s, RMSE = %s, MAE = %s, Evaluation_indicators = %s
+                 SET actual_prediction = %s, RMSE = %s, MAE = %s, Evaluation_indicators = %s,
+                     important = %s, hitmap = %s
                  WHERE request_number = %s'''
-        data = (image_data, rmse, mae, adj_r2, latest_request_number)
+        data = (image_data, rmse, mae, adj_r2, importance_image_data, heatmap_image_data, latest_request_number)
         
-        # 데이터 업데이트
         cursor.execute(sql, data)
-        
-        # 변경 사항 커밋
         connection.commit()
 
 finally:
-    # 연결 종료
     connection.close()
