@@ -11,7 +11,8 @@ import pymysql
 import io
 import seaborn as sns
 
-
+plt.rcParams['font.family'] ='Malgun Gothic'
+plt.rcParams['axes.unicode_minus'] =False
 # MariaDB에 연결 및 CSV 파일 데이터 읽기
 db_config = {
     'host': 'localhost',
@@ -85,9 +86,9 @@ print(f"MAE score : {round(mae, 3)}")
 
 # 예측 vs 실제 그래프 저장
 plt.figure(figsize=(10, 6))
-plt.title('Prediction vs Actual (XGBoost)', fontproperties=font_prop)
-plt.xlabel('Prediction', fontproperties=font_prop)
-plt.ylabel('Actual', fontproperties=font_prop)
+plt.title('Prediction vs Actual (XGBoost)')
+plt.xlabel('Prediction')
+plt.ylabel('Actual')
 plt.grid()
 plt.scatter(y_pred_xgb, y_test, alpha=0.5)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2)
@@ -103,8 +104,8 @@ plt.close()
 # 특성 중요도 그리기
 fig, ax = plt.subplots(figsize=(10, 9))
 plot_importance(best_model_xgb, height=0.8, grid=False, ax=ax)
-plt.xlabel('특성 중요도', fontproperties=font_prop)
-plt.ylabel('변수명', fontproperties=font_prop)
+plt.xlabel('특성 중요도')
+plt.ylabel('변수명')
 importance_buffer = io.BytesIO()
 plt.savefig(importance_buffer, format='jpeg')
 importance_buffer.seek(0)
@@ -115,7 +116,7 @@ plt.close()
 corr = X.corr()
 plt.figure(figsize=(17, 10))
 sns.heatmap(corr, vmin=-1, vmax=1, cmap='coolwarm', annot=True, fmt=".2f", linewidths=.5)
-plt.title('히트맵', fontproperties=font_prop)
+plt.title('히트맵')
 heatmap_buffer = io.BytesIO()
 plt.savefig(heatmap_buffer, format='jpeg')
 heatmap_buffer.seek(0)
