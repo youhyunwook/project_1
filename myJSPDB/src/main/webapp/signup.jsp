@@ -13,56 +13,64 @@
 </head>
 <body>
     <div class="container">
-   		<div class="card-front" style="position:relative; max-height:700px;">
+   <div class="card-front" style="position:relative; max-height:auto;">
         <h3 style="text-align: center; margin-top:50px;">Customer Sign Up</h3>
-        <form action="signup" method="post">
-            <div class="form-group">
-                <label for="customer_user_id">ID</label><br>
-                <input type="text" id="customer_user_id" name="customer_user_id" class="form-style_b1" placeholder="Enter UserId to use" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="customer_user_pwd">PASSWORD</label><br>
-                <input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="Enter UserPassword to use" class="form-style_b1" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="customer_user_name">NAME</label><br>
-                <input type="text" id="customer_user_name" name="customer_user_name" placeholder="Enter your Name" class="form-style_b1" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="customer_user_company">COMPANY NAME</label><br>
-                <input type="text" id="customer_user_company" name="customer_user_company" placeholder="Enter your Company Name" class="form-style_b1" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="customer_user_phoneNumber">PHONE NUMBER</label><br>
-                <input type="text" id="customer_user_phoneNumber" name="customer_user_phoneNumber" placeholder="Enter your PhoneNumber without '-'" class="form-style_b1" required>
-                <p>전화번호는 - 를 빼고 적어주세요</p>
-            </div>
-            
-            <div class="form-group">
-                <label for="customer_user_email">EMAIL</label><br>
-                <input type="text" id="customer_user_email1" name="customer_user_email1" class="form-style_b2" placeholder="Enter your Email Id" required>
-                @
-                <input type="text" id="customer_user_email2" name="customer_user_email2" class="form-style_b2" placeholder="Choose OR Enter your Domain" required>
-                <select id="customer_user_email3" name="customer_user_email3" class="form-style_b3">
-                    <option value="">직접입력</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="daum.net">daum.net</option>
-                    <option value="kakao.com">kakao.com</option>
-                </select>
-                <p>이메일은 정확하게 적어주세요 (ID/PW 분실 시 필요)</p>
-            </div>
-            
-            <button type="submit" class="btn" style="margin-left: 35px; margin-bottom:20px;"> Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn" onclick="window.location.href='loginMain.jsp'">Back to Login</button>
-        </form>
+     <form action="signup" method="post" id="signupForm">
+    <div class="form-group">
+        <label for="customer_user_id">ID</label><br>
+        <input type="text" id="customer_user_id" name="customer_user_id" class="form-style_b1" placeholder="Enter UserId to use" style="width:280px;" required>
+        	<button type="button" class="btn" onclick="#" style="margin-left:15px; width: 142px; height:40px;" disabled>ID Check</button>
+        <p id="idError" style="color: red;"></p>
+    </div>
+    
+    <div class="form-group">
+        <label for="customer_user_pwd">PASSWORD</label><br>
+        <input type="password" id="customer_user_pwd" name="customer_user_pwd" placeholder="Enter UserPassword to use" class="form-style_b1" required>
+        <p id="pwdError" style="color: red;"></p>
+    </div>
+    
+    <div class="form-group">
+        <label for="customer_user_name">NAME</label><br>
+        <input type="text" id="customer_user_name" name="customer_user_name" placeholder="Enter your Name" class="form-style_b1" required>
+        <p id="nameError" style="color: red;"></p>
+    </div>
+    
+    <div class="form-group">
+        <label for="customer_user_company">COMPANY NAME</label><br>
+        <input type="text" id="customer_user_company" name="customer_user_company" placeholder="Enter your Company Name" class="form-style_b1" required>
+        <p id="companyError" style="color: red;"></p>
+    </div>
+    
+    <div class="form-group">
+        <label for="customer_user_phoneNumber">PHONE NUMBER</label><br>
+        <input type="text" id="customer_user_phoneNumber" name="customer_user_phoneNumber" placeholder="Enter your PhoneNumber without '-'" class="form-style_b1" required>
+        <p>전화번호는 - 를 빼고 적어주세요</p>
+        <p id="phoneError" style="color: red;"></p>
+    </div>
+    
+    <div class="form-group">
+        <label for="customer_user_email">EMAIL</label><br>
+        <input type="text" id="customer_user_email1" name="customer_user_email1" class="form-style_b2" placeholder="Enter your Email Id" required>
+        @
+        <input type="text" id="customer_user_email2" name="customer_user_email2" class="form-style_b2" placeholder="Choose OR Enter your Domain" required>
+        <select id="customer_user_email3" name="customer_user_email3" class="form-style_b3">
+            <option value="">직접입력</option>
+            <option value="gmail.com">gmail.com</option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="kakao.com">kakao.com</option>
+        </select>
+        <p>이메일은 정확하게 적어주세요 (ID/PW 분실 시 필요)</p>
+        <p id="emailError" style="color: red;"></p>
+    </div>
+    
+    <button type="submit" class="btn" style="margin-left: 80px; margin-bottom:20px;" disabled>Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn" onclick="window.location.href='loginMain.jsp'">Back to Login</button>
+</form>
+
     </div>
     </div>
-	<script>
+<script>
         document.getElementById('customer_user_email3').addEventListener('change', function() {
             var domainInput = document.getElementById('customer_user_email2');
             var selectedDomain = this.value;
@@ -86,5 +94,6 @@
             domainInput.value = initialDomain;
         });
     </script>
+<script src="Signup.js"></script>
 </body>
 </html>
