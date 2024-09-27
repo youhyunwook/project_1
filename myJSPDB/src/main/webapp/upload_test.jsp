@@ -102,8 +102,11 @@
                  PreparedStatement statement = null;
 
                  try {
+                     // 현재 실행 중인 디렉토리 경로 가져오기
+                     String realPath = getServletContext().getRealPath("/");
+                     String pythonScriptPath = realPath + "ml_model.py";  // 현재 디렉토리 내에 있는 스크립트 경로
+
                      // Python 스크립트 실행 
-                     String pythonScriptPath = "C:\\Users\\LEE\\Desktop\\ml_model.py";
                      ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath);
                      processBuilder.redirectErrorStream(true);
                      Process process = processBuilder.start();
@@ -134,7 +137,7 @@
                          // 쿼리 실행
                          statement.executeUpdate();
 
-                         response.sendRedirect("listPosts.jsp"); 
+                         response.sendRedirect("listPosts.jsp"); // 리다이렉트 호출
                      } else {
                          throw new Exception("Python script failed with exit code " + exitCode);
                      }
@@ -148,14 +151,13 @@
                      if (connection != null) connection.close();
                  }
              } else {
-                 response.sendRedirect("index3.jsp"); 
+                 response.sendRedirect("index3.jsp"); // 예시로 에러 페이지로 리다이렉트
              }
          } catch (Exception e) {
              e.printStackTrace();
              out.println("<script>alert('오류가 발생했습니다. 관리자에 문의해주세요.'); location.href='index3.jsp';</script>");
          }
      }
-
         %>
 
     </div><br>
