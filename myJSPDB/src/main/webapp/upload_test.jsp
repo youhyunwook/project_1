@@ -79,7 +79,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
                 if (connection != null) connection.close();
             }
         } else {
-            response.sendRedirect("index3.jsp"); // 예시로 에러 페이지로 리다이렉트
+            response.sendRedirect("index3.jsp"); 
         }
     } catch (Exception e) {
         e.printStackTrace();
