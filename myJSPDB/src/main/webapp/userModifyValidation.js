@@ -47,13 +47,6 @@
     }
 
     function validateEmail() {
-        var email1 = document.getElementById("customer_user_email1").value;
-        var email2 = document.getElementById("customer_user_email2").value;
-        if (email1.trim() === "" || email2.trim() === "") {
-            alert("이메일 ID와 도메인을 입력해야 합니다.");
-            return false;
-        }
-        // 이메일 형식에 대한 기본적인 검증 (추가 가능)
         return true;
     }
 
