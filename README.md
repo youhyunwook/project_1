@@ -24,12 +24,25 @@
 여기에 프로젝트에 대한 간단한 설명을 추가하세요. 이 프로젝트는 무엇을 하는 것인지, 왜 중요한지 설명합니다.
 
 ### ⚙️ 기술 스택
+<div> 통합개발환경(IDE)
+    <img src="https://img.shields.io/badge/eclipse-#2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">
+</div>
 <div>
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
   <img src="https://img.shields.io/badge/JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-</div>- 기술 스택 2
-- 기술 스택 3
+</div>
+<div>
+   ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
+    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+    <img src="https://img.shields.io/badge/ApacheTomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
+    <img src="https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white">
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+</div>
 
 ### 🚀 시작하기
 프로젝트를 로컬 환경에서 시작하기 위한 단계별 지침을 추가하세요.
