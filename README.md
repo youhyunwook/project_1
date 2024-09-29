@@ -25,7 +25,7 @@
 
 ### ⚙️ 기술 스택
 <div> 통합개발환경(IDE)
-    <img src="https://img.shields.io/badge/eclipse-#2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
+<img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
 </div>
 <div>
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
