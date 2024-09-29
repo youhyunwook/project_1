@@ -21,7 +21,7 @@ CREATE TABLE `posts` (
   `body` varchar(1000),
   `admin_id` char(12),
   `answer` char(255),
-  `created_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `create_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `answered_date` timestamp NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
