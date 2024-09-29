@@ -24,9 +24,10 @@
 여기에 프로젝트에 대한 간단한 설명을 추가하세요. 이 프로젝트는 무엇을 하는 것인지, 왜 중요한지 설명합니다.
 
 ### ⚙️ 기술 스택
+<div>
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css3-E34F26?style=for-the-badge&logo=css3&logoColor=white">
-- 기술 스택 2
+</div>- 기술 스택 2
 - 기술 스택 3
 
 ### 🚀 시작하기
