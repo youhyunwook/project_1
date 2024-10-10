@@ -8,12 +8,10 @@
 **프로젝트 팀:** Team Unity
 
 ---
-# 팀 소개
-
+### 팀 소개
+|<img src="https://avatars.githubusercontent.com/u/75469131?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/9919?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/18133?v=4" width="150" height="150"/>|
 |:-:|:-:|:-:|
-|Kim Seon<br/>[팀장 youhyunwook](https://github.com/youhyunwook)|GitHub<br/>[@github](https://github.com/github)|Git<br/>[@git](https://github.com/git)|
-
-
+|유현욱<br/>[@youhyunwook](https://github.com/youhyunwook)|GitHub<br/>[@github](https://github.com/github)|Git<br/>[@git](https://github.com/git)|
 ---
 
 ### 프로젝트 개발 계획서
