@@ -18,7 +18,7 @@
 [개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit)
 
 ---
-# 목차
+### 목차
 ## 1. [프로젝트 개요 및 목적](#-프로젝트-개요-및-목적)
 ## 2. [프로젝트 수행 절차 및 방법](#-기술-스택)
 ## 3. [프로젝트 수행 경과]()
