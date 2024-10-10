@@ -11,7 +11,7 @@
 ### 팀 소개
 |<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|
 |:-:|:-:|:-:|
-|유현욱<br/>팀장<br/>[@youhyunwook](https://github.com/youhyunwook)|이태훈<br/>팀원<br/>[@github](https://github.com/github)|유현재<br/>팀원<br/>[@git](https://github.com/git)|
+|유현욱<br/>팀장<br/>[@youhyunwook](https://github.com/youhyunwook)|이태훈<br/>팀원<br/>[@github](https://github.com/evelth)|유현재<br/>팀원<br/>[@git](https://github.com/git)|
 ---
 
 ### 프로젝트 개발 계획서
@@ -20,7 +20,7 @@
 ---
 
 ### 📌 프로젝트 개요
-여기에 프로젝트에 대한 간단한 설명을 추가하세요. 이 프로젝트는 무엇을 하는 것인지, 왜 중요한지 설명합니다.
+데이터 분석 전문 회사 웹페이지
 
 ### ⚙️ 기술 스택
 <div> 통합개발환경(IDE)
