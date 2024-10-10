@@ -18,8 +18,16 @@
 [개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit)
 
 ---
+# - 목차
+## 1. 프로젝트 개요 및 목적[⬇️](https://github.com/sts07142/senior_project?tab=readme-ov-file#프로젝트-개요)
+## 2. 프로젝트 수행 절차 및 방법[⬇️](https://github.com/sts07142/senior_project?tab=readme-ov-file#2-objective--output%EF%B8%8F-1)
+## 3. 프로젝트 수행 경과[⬇️](https://github.com/sts07142/senior_project?tab=readme-ov-file#3-result%EF%B8%8F-1)
+## 4. 프로젝트 시연[⬇️](https://github.com/sts07142/senior_project?tab=readme-ov-file#4-expectation%EF%B8%8F-1)
 
-### 📌 프로젝트 개요
+---
+
+
+### 📌 프로젝트 개요(#프로젝트-개요)
 데이터 분석 전문 회사 웹페이지
 
 ### ⚙️ 기술 스택
