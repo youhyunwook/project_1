@@ -4,11 +4,11 @@
 
 ---
 
-### 팀 정보
+## 팀 정보
 **프로젝트 팀:** Team Unity
 
 ---
-### 팀 소개
+## 팀 소개
 |<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|
 |:-:|:-:|:-:|
 |유현욱<br/>팀장<br/>[@youhyunwook](https://github.com/youhyunwook)|이태훈<br/>팀원<br/>[@github](https://github.com/evelth)|유현재<br/>팀원<br/>[@git](https://github.com/git)|
@@ -18,20 +18,20 @@
 [개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit)
 
 ---
-### 목차
-## 1. [프로젝트 개요 및 목적](#-프로젝트-개요-및-목적)
-## 2. [프로젝트 수행 절차 및 방법](#-기술-스택)
-## 3. [프로젝트 수행 경과]()
-## 4. [프로젝트 시연]()
+## 목차
+### 1. [프로젝트 개요 및 목적](#-프로젝트-개요-및-목적)
+### 2. [프로젝트 수행 절차 및 방법](#-기술-스택)
+### 3. [프로젝트 수행 경과]()
+### 4. [프로젝트 시연]()
 
 ---
 
 
-### 📌 프로젝트 개요 및 목적
+## 📌 프로젝트 개요 및 목적
 데이터 분석 전문 회사 웹페이지
 [목차로 돌아가기](#-목차)
 
-### ⚙️ 기술 스택
+## ⚙️ 기술 스택
 <div> 통합개발환경(IDE)
 <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
 </div>
@@ -53,5 +53,5 @@
      <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
 </div>
 
-### 🚀 시작하기
+## 🚀 시작하기
 프로젝트를 로컬 환경에서 시작하기 위한 단계별 지침을 추가하세요.
