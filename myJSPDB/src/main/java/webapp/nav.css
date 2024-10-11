@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+/* PC version */
+/* 네비바 상단고정 효과 */
+.fixed-top {
+    transition: background-color 0.2s; /* 부드러운 전환 효과 */
+}
+/* 네비바 css 메인 */
+.navbar_main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  color: #000;
+  z-index: 999;
+  animation: navbarBottom 1s forwards;
+}
+
+.navbar_links {
+  display: flex; /* Flexbox for horizontal layout */
+  justify-content: center; /* Center items horizontally */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+li {
+  list-style-type: none; /* Remove default list item marker */
+}
+
+ul {
+  list-style-type: none; /* Remove default list item marker */
+}
+
+.navbar_links a {
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 200;
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px !important;
+  margin: 20px; /* Set spacing between items */
+}
+
+.navbar_links a::before,
+.navbar_links a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+
+.navbar_links a::before {
+  background-color: red;
+}
+
+.navbar_links a::after {
+  background-color: blue;
+  color: white; /* This won't affect a pseudo-element */
+}
+
+.navbar_links a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.navbar_logo {
+  margin-left: 10%;
+  text-decoration: none;
+  color: #000;
+  font-size: 2.3rem;
+  font-weight: 500;
+}
+
+.navbar_scroll {
+  background-color: #fff;
+  z-index: 5;
+  border-bottom: 1px solid gray;
+}
+
+.navbar_scroll div a,
+.navbar_scroll a {
+  color: black;
+}
+
+@keyframes navbarBottom {
+  0% {
+    transform: translateY(-70%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Placeholder Image Styles */
+.bd-placeholder-img {
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 200;
+  font-size: 1.125rem;
+  text-anchor: middle;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-family: "Black Han Sans", sans-serif;
+    font-weight: 200;
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+/* styles.css */
+/* styles.css */
+body {
+    transition: opacity 0.5s ease;
+    opacity: 1; /* 초기 불투명도 */
+}
+
+.fade-out {
+    opacity: 0; /* 불투명도 0 */
+}
+
+.fade-in {
+    opacity: 1; /* 불투명도 1 */
+}
+
+/* 구글 폰트 */
+.black-han-sans-regular {
+	  font-family: "Black Han Sans", sans-serif;
+	  font-weight: 400;
+	  font-style: normal;
+	}
+
