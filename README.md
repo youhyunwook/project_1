@@ -53,7 +53,7 @@
 ---
 ## 📌 프로젝트 개요 및 목적
 데이터 분석 전문 회사 웹페이지<br>
-<img src="https://github.com/user-attachments/assets/9f01eda0-823c-4036-81e1-f11210ecbaa5" style="width:400px;">
+<img src="https://github.com/user-attachments/assets/9f01eda0-823c-4036-81e1-f11210ecbaa5" style="width:800px;">
 
 [목차로 돌아가기](#목차)
 
