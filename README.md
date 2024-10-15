@@ -85,7 +85,7 @@
 ### 3-3. 핵심 Method
 <img src="https://github.com/user-attachments/assets/c0d048ad-ffff-41ff-8df8-2ea06d7fb85c" style="width:800px;">
 
-### 3-2. 데이터 분석
+### 3-4. 데이터 분석
 <img src="https://github.com/user-attachments/assets/b36d3f45-1e79-4b40-a806-667ced3b35d5" style="width:800px;">
 <img src="https://github.com/user-attachments/assets/e1830a7a-3371-449d-9090-f4a5830f1bd8" style="width:800px;">
 
