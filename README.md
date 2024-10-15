@@ -29,6 +29,9 @@
      <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
 </div>
 
+<img src="https://github.com/user-attachments/assets/326a0377-8937-4d56-8b67-f1cbfeb6b232" style="width:800px;">
+
+
 ---
 ## 팀 소개
 |<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|
@@ -48,6 +51,8 @@
 - [2-1. 마일스톤(전체일정-산출물)](#2-1-마일스톤전체일정)
 - [2-2. WBS(구현일정)](#2-2-WBS구현일정)
 ### 3. [프로젝트 수행 경과](#-프로젝트-수행-경과)
+- [3-1. DB Diagram](#3-1-DB-Diagram)
+- [3-2. Web Flow Chart](#3-2-Web-Flow-Chart)
 ### 4. [프로젝트 시연](#-프로젝트-시연)
 
 ---
@@ -67,3 +72,6 @@
 <img src="https://github.com/user-attachments/assets/8f413ede-5bb7-48fe-a66d-f1d7416e1054" style="width:800px;">
 
 [목차로 돌아가기](#목차)
+
+
+
