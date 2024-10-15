@@ -29,6 +29,9 @@
      <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
 </div>
 
+<img src="https://github.com/user-attachments/assets/7a1e6a94-ea00-4970-8e41-198b2d455c2e" style="width:800px;">
+
+
 ---
 ## 팀 소개
 |<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|
