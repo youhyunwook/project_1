@@ -39,7 +39,7 @@
 |유현욱<br/>팀장<br/>[@youhyunwook](https://github.com/youhyunwook)|이태훈<br/>팀원<br/>[@github](https://github.com/evelth)|유현재<br/>팀원<br/>[@git](https://github.com/git)|
 ---
 ### 프로젝트 개발 계획서
-[개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/iVUgEJCfW-CegUKUjV539g/edit)
+[개발 계획서.ppt](https://www.canva.com/design/DAGNhDwQJpI/B1D7OaZp5KXRw-HZayGb-g/view?utm_content=DAGNhDwQJpI&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 ---
 ## 목차
