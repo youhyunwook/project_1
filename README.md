@@ -53,6 +53,8 @@
 ### 3. [프로젝트 수행 경과](#-프로젝트-수행-경과)
 - [3-1. DB Diagram](#3-1-DB-Diagram)
 - [3-2. Web Flow Chart](#3-2-Web-Flow-Chart)
+- [3-3. 핵심 Method](#3-3-핵심-Method)
+- [3-4. Data Analysis](#3-4-데이터-분석)
 ### 4. [프로젝트 시연](#-프로젝트-시연)
 
 ---
@@ -79,5 +81,12 @@
 
 ### 3-2. Web Flow Chart
 <img src="https://github.com/user-attachments/assets/86a13f76-9ede-4455-ba95-9fc0c28d2102" style="width:800px;">
+
+### 3-3. 핵심 Method
+<img src="https://github.com/user-attachments/assets/c0d048ad-ffff-41ff-8df8-2ea06d7fb85c" style="width:800px;">
+
+### 3-2. 데이터 분석
+<img src="https://github.com/user-attachments/assets/b36d3f45-1e79-4b40-a806-667ced3b35d5" style="width:800px;">
+<img src="https://github.com/user-attachments/assets/e1830a7a-3371-449d-9090-f4a5830f1bd8" style="width:800px;">
 
 [목차로 돌아가기](#목차)
