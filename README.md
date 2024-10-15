@@ -3,10 +3,6 @@
 ## 🛠️ Project 1
 
 ---
-
-## 팀 정보
-**프로젝트 팀:** Team Unity
----
 ## ⚙️ 기술 스택
 <div>
 <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
@@ -35,6 +31,8 @@
 
 
 ---
+## 팀 정보
+**프로젝트 팀:** Team Unity
 ## 팀 소개
 |<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|<img src="" width="150" height="150"/>|
 |:-:|:-:|:-:|
@@ -53,6 +51,8 @@
 - [2-1. 마일스톤(전체일정-산출물)](#2-1-마일스톤전체일정)
 - [2-2. WBS(구현일정)](#2-2-WBS구현일정)
 ### 3. [프로젝트 수행 경과](#-프로젝트-수행-경과)
+- [3-1. DB Diagram](#3-1-DB-Diagram)
+- [3-2. Web Flow Chart](#3-2-Web-Flow-Chart)
 ### 4. [프로젝트 시연](#-프로젝트-시연)
 
 ---
@@ -70,5 +70,14 @@
 
 ### 2-2. WBS(구현일정)
 <img src="https://github.com/user-attachments/assets/8f413ede-5bb7-48fe-a66d-f1d7416e1054" style="width:800px;">
+
+[목차로 돌아가기](#목차)
+
+## 🚀 프로젝트 수행 경과
+### 3-1. DB Diagram
+<img src="https://github.com/user-attachments/assets/7a4761d4-9b34-4fbf-8f82-c851c40cffdc" style="width:800px;">
+
+### 3-2. Web Flow Chart
+<img src="https://github.com/user-attachments/assets/86a13f76-9ede-4455-ba95-9fc0c28d2102" style="width:800px;">
 
 [목차로 돌아가기](#목차)
