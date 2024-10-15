@@ -55,7 +55,6 @@
 - [3-2. Web Flow Chart](#3-2-Web-Flow-Chart)
 - [3-3. 핵심 Method](#3-3-핵심-Method)
 - [3-4. Data Analysis](#3-4-데이터-분석)
-### 4. [프로젝트 시연](#-프로젝트-시연)
 
 ---
 ## 📌 프로젝트 개요 및 목적
