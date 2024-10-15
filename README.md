@@ -8,7 +8,7 @@
 **프로젝트 팀:** Team Unity
 ---
 ## ⚙️ 기술 스택
-<div> 통합개발환경(IDE)
+<div>
 <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
 </div>
 <div>
@@ -30,6 +30,8 @@
 </div>
 
 <img src="https://github.com/user-attachments/assets/7a1e6a94-ea00-4970-8e41-198b2d455c2e" style="width:800px;">
+
+<img src="https://github.com/user-attachments/assets/a15d4658-bb62-49b0-8728-369ea5653f61" style="width:800px;">
 
 
 ---
