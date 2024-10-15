@@ -61,5 +61,5 @@
 
 ## 🚀 프로젝트 수행 절차 및 방법
 ### 2-1.마일스톤(전체일정)
-![image](https://github.com/user-attachments/assets/a96e24d6-2a6f-4928-89cd-ecf03009c3e6)
+<img src="https://github.com/user-attachments/assets/a96e24d6-2a6f-4928-89cd-ecf03009c3e6" style="width:800px;">
 ### 2-2.WBS(구현일정)
