@@ -64,7 +64,6 @@
 [목차로 돌아가기](#목차)
 
 ---
-
 ## 🚀 프로젝트 수행 절차 및 방법
 ### 2-1. 마일스톤(전체일정)
 <img src="https://github.com/user-attachments/assets/a96e24d6-2a6f-4928-89cd-ecf03009c3e6" style="width:800px;">
@@ -74,6 +73,7 @@
 
 [목차로 돌아가기](#목차)
 
+---
 ## 🚀 프로젝트 수행 경과
 ### 3-1. DB Diagram
 <img src="https://github.com/user-attachments/assets/7a4761d4-9b34-4fbf-8f82-c851c40cffdc" style="width:800px;">
@@ -90,4 +90,4 @@
 
 [목차로 돌아가기](#목차)
 
-
+---
